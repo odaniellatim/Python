@@ -3,22 +3,30 @@ import os
 import time
 
 #numeros do bingo em jogo
-numeros_bingo = [0,1,2,3,4,5,6,7,8,9,10]
+numeros_bingo = []
 numeros_sorteados = []
 
 #Randomiza os numeros do bingo.
 rd.shuffle(numeros_bingo)
 
-#gera um numero aleatório toda após a confirmação do usuario.
+#Configuração do sistema antes de iniciar a roda.
 print(" ")
 print(" Defina o tempo de espeara entre cada Rodada: ")
 tempo_rodada = int(input())
+
 os.system('clear')
+
+quantidade_numeros_bing = int(input("Digite a quantidade maxima de numeros a ser sorteados. \n -> "))
+for numero in range(0, quantidade_numeros_bing):
+  numeros_bingo.append(numero)
+
+os.system('clear')
+
 
 def gerador_aleatorio():
 
     #gera um numero aleatório
-    n = rd.randint(0,10)
+    n = rd.randint(0,quantidade_numeros_bing)
     return gera_numero(n)
 
 def gera_numero(n):
@@ -80,7 +88,7 @@ while True:
         if recomecar == "s" or recomecar == "S":
             os.system('clear')
             numeros_sorteados.clear();
-            numeros_bingo = [0,1,2,3,4,5,6,7,8,9,10]
+            numeros_bingo = numeros_bingo
         else:
             break
     else:
