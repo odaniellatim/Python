@@ -55,7 +55,6 @@ def menu():
     print("")
 
 # FrontEnd programa
-
 while True:
 
     menu()
@@ -67,13 +66,11 @@ while True:
         listarItens()
     elif opcao == 3:
         listarItens()
-        item = input("Informe o nome do item que vai ser apagado: \n -> ")
-        apagar(item)
+        item2 = input("Informe o nome do item que vai ser apagado: \n -> ")
+        apagar(item2)
     elif opcao == 4:
         os.system('clear')
         listarItens()
         break
 
-    
-    
-print(" " * 50)
+    print(" " * 50)
