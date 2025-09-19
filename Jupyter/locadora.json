@@ -1,0 +1,28 @@
+{
+    "clientes": [
+        {
+            "id": 1,
+            "nome": "Carlos Oliveira",
+            "email": "carlos.oliveira@email.com",
+            "telefone": "(11) 98888-5678",
+            "interesses": [
+                "FPS",
+                "Esportes",
+                "Xbox Series X",
+                "Competitivo"
+            ]
+        },
+        {
+            "id": 3,
+            "nome": "Ana Silva",
+            "email": "ana.silva@email.com",
+            "telefone": "(11) 99999-1234",
+            "interesses": [
+                "RPG",
+                "Aventura",
+                "PlayStation 5",
+                "Nintendo Switch"
+            ]
+        }
+    ]
+}

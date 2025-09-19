@@ -1,0 +1,110 @@
+{
+    "clientes": [
+        {
+            "id": 1,
+            "nome": "Ana Silva",
+            "email": "ana.silva@email.com",
+            "telefone": "(11) 99999-1234",
+            "interesses": [
+                "RPG",
+                "Aventura",
+                "PlayStation 5",
+                "Nintendo Switch"
+            ]
+        },
+        {
+            "id": 2,
+            "nome": "Carlos Oliveira",
+            "email": "carlos.oliveira@email.com",
+            "telefone": "(11) 98888-5678",
+            "interesses": [
+                "FPS",
+                "Esportes",
+                "Xbox Series X",
+                "Competitivo"
+            ]
+        },
+        {
+            "id": 3,
+            "nome": "Mariana Santos",
+            "email": "mariana.santos@email.com",
+            "telefone": "(11) 97777-9012",
+            "interesses": [
+                "Indie",
+                "Puzzle",
+                "Nintendo Switch",
+                "Jogos Casuais"
+            ]
+        },
+        {
+            "id": 4,
+            "nome": "Ricardo Pereira",
+            "email": "ricardo.pereira@email.com",
+            "telefone": "(11) 96666-3456",
+            "interesses": [
+                "A\u00e7\u00e3o",
+                "Aventura",
+                "PlayStation 5",
+                "God of War",
+                "Hist\u00f3ria"
+            ]
+        },
+        {
+            "id": 5,
+            "nome": "Juliana Costa",
+            "email": "juliana.costa@email.com",
+            "telefone": "(11) 95555-7890",
+            "interesses": [
+                "Simula\u00e7\u00e3o",
+                "Estrat\u00e9gia",
+                "PC",
+                "Jogos Relaxantes",
+                "Nintendo Switch"
+            ]
+        },
+        {
+            "id": 6,
+            "nome": "Daniel",
+            "email": "suporte@daniellatim.com",
+            "telefone": "11 2020-2020",
+            "interesses": [
+                "Futebol",
+                "Musica",
+                "Games"
+            ]
+        },
+        {
+            "id": 7,
+            "nome": "Biel",
+            "email": "biel@gmail.com",
+            "telefone": "112020-2020",
+            "interesses": [
+                "Wartale",
+                "Gunbold",
+                "Priston BR"
+            ]
+        },
+        {
+            "id": 8,
+            "nome": "Biel",
+            "email": "biel@gmail.com",
+            "telefone": "112020-2020",
+            "interesses": [
+                "Wartale",
+                "Gunbold",
+                "Priston BR"
+            ]
+        },
+        {
+            "id": 9,
+            "nome": "Biel",
+            "email": "biel@gmail.com",
+            "telefone": "112020-2020",
+            "interesses": [
+                "Wartale",
+                "Gunbold",
+                "Priston BR"
+            ]
+        }
+    ]
+}
