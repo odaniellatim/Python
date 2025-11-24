@@ -49,8 +49,8 @@ def valor_hora(renda: float, hora_trabalhado: int, minuto_trabalhado: int):
 
 if __name__ == "__main__":
     # Variaveis de configuração base para o programa funcionar
-    salario_mensal = 5000  # Valor do salario mensal desejado, usado para realizar os calculos do valor em hora e minuto
-    horas_projeto = 3
+    salario_mensal = 4500  # Valor do salario mensal desejado, usado para realizar os calculos do valor em hora e minuto
+    horas_projeto = 4
     minutos_projeto = 38
     projetos_mensal = 15
 

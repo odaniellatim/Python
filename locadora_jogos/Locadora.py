@@ -42,4 +42,3 @@ class Locadora:
                     print(f"id: {id.ljust(15,'.')} Empresa: {fabricante_nome.ljust(40, '.').title()} Pais: {pais_nome.ljust(20, '.').title()} Consoles: {console_string.title()}")
             
         print("")
-        

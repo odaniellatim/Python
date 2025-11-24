@@ -1,0 +1,4 @@
+[{'id': range(1, 1000), 'nome': 'Arroz', 'valor': 22.5}] 
+[{'id': range(0, 1000), 'nome': 'Pera', 'valor': 5.99}] 
+[{'id': range(0, 1000), 'nome': 'Pera', 'valor': 33.5}] 
+[{'id': range(0, 1000), 'nome': 'Arroz', 'valor': 33.0}] 
