@@ -3,13 +3,11 @@ def largura(x):
     wide = 16 * x / 9
     return round(wide)
 
-
 # função que faz o calculo para econtrar o valor de largura ideal
 def altura(x):
     altura = x * 9 / 16
     return round(altura)
-
-
+    
 # função que que verifica o valor e converte o numero em inteiro.
 def convertimg(l=0, a=0):
     if l == "" or a == "":
@@ -25,7 +23,6 @@ def convertimg(l=0, a=0):
     else:
         print("      ---------        ")
         print("O numero deve ser maior que 0!")
-
 
 sair = ""
 

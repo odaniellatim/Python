@@ -62,6 +62,7 @@ while True:
 
     if opcao == 1:
         cadastro()
+        
     elif opcao == 2:
         listarItens()
     elif opcao == 3:

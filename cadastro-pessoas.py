@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 import os
 
+menu_ativo = True
 json_path = Path("texte.json")
 cadastros = []    
 
@@ -75,8 +76,6 @@ def item_selecionado(item_selecionado):
             cadastrar()
         case 1 | "Listar":
             get_items()
-        case 2 | "Sair":
-            return
         
 
 
@@ -90,7 +89,9 @@ def item_selecionado(item_selecionado):
 #     print(cadastro)
  
 # Cria um menu para o usuario selecionar um dos items.
-while True:
+
+
+while menu_ativo:
     menu()
     print(" " * 30) 
     print("- " * 30) 
@@ -98,3 +99,6 @@ while True:
     opcao = int(input("Selecione uma das opções do menu: "))
     item_selecionado(opcao)
     
+    if opcao == 2 or opcao == "sair":
+        print("Finalizado com sucesso!")
+        break
