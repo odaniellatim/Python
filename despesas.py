@@ -1,5 +1,5 @@
 
-# definição dos valores a pagar.
+# definição dos valores a pagar (valores de exemplo).
 qt_tenis_pintados = 20
 aluguel = 2_048.44
 cc_pf_nubank = 1_749.30
