@@ -21,14 +21,16 @@ indent_mode=2
 name=Python
 base_path=/home/odaniellatim/Documentos/GitHub/Python
 description=
+file_patterns=
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=211;Python;0;EUTF-8;1;1;0;%2Fhome%2Fodaniellatim%2FDocumentos%2FGitHub%2FPython%2Fresize.py;0;4
+current_page=1
+FILE_NAME_0=939;Python;0;EUTF-8;1;1;1;%2Fhome%2Fodaniellatim%2FDocumentos%2FGitHub%2FPython%2Fresize.py;0;4
+FILE_NAME_1=726;Python;0;EUTF-8;1;1;0;%2Fhome%2Fodaniellatim%2FDocumentos%2FGitHub%2FPython%2Fdespesas.py;0;4
 
 [VTE]
 last_dir=/home/odaniellatim/Documentos/GitHub/Python
@@ -42,3 +44,15 @@ ignored_file_patterns=*.o;*.obj;*.a;*.lib;*.so;*.dll;*.lo;*.la;*.class;*.jar;*.p
 generate_tag_prefs=0
 show_empty_dirs=true
 external_dirs=
+
+[build-menu]
+PythonFT_01_LB=
+PythonFT_01_CM=
+PythonFT_01_WD=
+filetypes=Python;
+PythonFT_00_LB=_Compile
+PythonFT_00_CM=python3 -m py_compile "%f"
+PythonFT_00_WD=
+EX_00_LB=_Execute
+EX_00_CM=python3 "%f"
+EX_00_WD=

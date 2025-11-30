@@ -25,7 +25,6 @@ def convertimg(l=0, a=0):
         print("O numero deve ser maior que 0!")
 
 sair = ""
-
 while True:
     if sair == "X" or sair == "x":
         break
