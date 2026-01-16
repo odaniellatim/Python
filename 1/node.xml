@@ -1,4 +1,7 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <node unique_id="1" master_id="0" name="despesas.py" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1764823164" ts_lastsave="1764823164">
+    <rich_text>
 # definição dos valores a pagar (valores de exemplo).
 qt_tenis_pintados: float = 20
 aluguel: float = 2_048.44
@@ -17,8 +20,7 @@ def math_soma(aluguel:float,
               agua:float,
               luz:float,
               claro:float,
-              cnpj:float) -> list :  
-    
+              cnpj:float) -&gt; list :  
     # valor usado para calcular o valor de emergencia.
     EMERGENCY = 1.9
       
@@ -51,4 +53,6 @@ print("-" * 30 )
 print(f"Valor total: R$ {round(resultado_math[6], 2)}")
 print(f"Valor Emergencia: R$ {round(resultado_math[5], 2)}")
 print(" " * 30)
-print(f'Valor de cada tênis pintado: R$ {round(resultado_math[6] / qt_tenis_pintados, 2)}')
+print(f'Valor de cada tênis pintado: R$ {round(resultado_math[6] / qt_tenis_pintados, 2)}')</rich_text>
+  </node>
+</cherrytree>

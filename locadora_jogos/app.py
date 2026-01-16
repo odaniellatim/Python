@@ -10,7 +10,11 @@ if __name__ == "__main__":
         fabricantes_db,
         consoles_db,
         jogos_db)
-    locadora.listar_jogos()
+    
+    # locadora.listar_jogos()
+    
     # locadora.cadastrar_fabricante("game1","Game One", "Brasil", ["pc", "ps4"])
-    #locadora.cadastrar_fabricante("game2","Game two", "Africa", ["ps5", "xbox_series_x","ps4"])
+    # locadora.cadastrar_fabricante("game2","Game two", "Africa", ["ps5", "xbox_series_x","ps4"])
     # locadora.listar_fabricantes("ps4")
+    
+    locadora.listar_fabricantes()

@@ -4,6 +4,7 @@ Página de teste de codigos Python
 
 import os
 
+#banco de dados usando uma lista de items
 lista = ["Maria", "Helena", "Luiz"]
 
 
@@ -13,6 +14,7 @@ def cadastro():
     nome = input("Informe seu nome: \n")
     lista.append(nome)
 
+    
 def apagar(item):
     os.system('clear')
     print(" " * 50)
@@ -20,7 +22,8 @@ def apagar(item):
     item_removido = lista.pop(int(item))
     print(f"{item_removido.upper()} foi removido com sucesso ")
     return item_removido
- 
+
+
 def listarItens():
     os.system('clear')
 
@@ -36,6 +39,7 @@ def listarItens():
         
     print(" " * 50)
 
+    
 # Menu do programa
 def menu():
     
@@ -57,9 +61,11 @@ def menu():
 # FrontEnd programa
 while True:
 
+    #inicializa o menu com as opções.
     menu()
     opcao = int(input("Digite a opção desejada: \n -> "))
 
+    #verifica o item do menu selecionado e chama uma funcao.
     if opcao == 1:
         cadastro()
         

@@ -4,6 +4,7 @@ class Locadora:
         self.consoles = consoles
         self.jogos = jogos
     
+    
     def listar_jogos(self):
         for console in self.consoles:
             print("")
@@ -16,6 +17,7 @@ class Locadora:
                     
             self.listar_fabricantes(console)
     
+    
     def cadastrar_fabricante(self,fb_codi, fb_nome, fb_pais, fb_consoles):
 
         self.fabricante[fb_codi] = {
@@ -25,9 +27,9 @@ class Locadora:
         }
         print(f"O fabricante '{self.fabricante[fb_codi]['nome']}' Cadastrado com Sucesso!")
         
+        
     def listar_fabricantes(self, fabricante_id=None):
         print("")       
- 
         
         for id, fabricante in self.fabricante.items():
             fabricante_nome = self.fabricante[id]['nome']

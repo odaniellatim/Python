@@ -1,3 +1,11 @@
+# classe que gerencia os métodos 
+class Sizes:
+    def __init__():
+        print("Classe iniciado!")
+
+# instancia da classe 
+novoItem = Sizes();
+
 # função que faz o calculo para econtrar o valor de altura ideal
 def largura(x):
     wide = 16 * x / 9
