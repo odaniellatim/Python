@@ -1,0 +1,87 @@
+{
+	"id": 1,
+	"nome": "Daniel Latim",
+	"username": "odaniellatim",
+	"password": 1234567,
+	"nivel_usuario": "admin",
+	"catalogo_produtos": [
+		{
+			"id": 1,
+			"nome_produtos": "Mouse xyz",
+			"valor_venda": 150.0,
+			"valor_compra": 75.0
+		},
+		{
+			"id": 2,
+			"nome_produtos": "Teclado xyz",
+			"valor_venda": 45.0,
+			"valor_compra": 12.0
+		}
+	],
+	"despesa": [
+		{
+			"id": 1,
+			"mes_pagamento": "janeiro",
+			"items_despesa_mes": [
+				{
+					"id": 1,
+					"nome_despesa": "Água",
+					"valor": 175.0,
+					"vencimento_dia": 13,
+					"pago": false
+				},
+				{
+					"id": 2,
+					"nome_despesa": "Luz",
+					"valor": 250.0,
+					"vencimento_dia": 20,
+					"pago": true
+				}
+			]
+		},
+		{
+			"id": 2,
+			"mes_pagamento": "fevereiro",
+			"items_despesa_mes": [
+				{
+					"id": 1,
+					"nome_despesa": "Água",
+					"valor": 175.0,
+					"vencimento_dia": 13,
+					"pago": false
+				},
+				{
+					"id": 2,
+					"nome_despesa": "Luz",
+					"valor": 250.0,
+					"vencimento_dia": 20,
+					"pago": false
+				}
+			]
+		}
+	],
+	"historico_vendas": [
+		{
+			"id": 1,
+			"mes": "janeiro",
+			"produtos_vendidos": [
+				{
+					"Mouse xyz": 90,
+					"teclado xyz": 60
+				}
+			],
+			"total_vendidos": 150
+		},
+		{
+			"id": 2,
+			"mes": "fevereiro",
+			"produtos_vendidos": [
+				{
+					"Mouse xyz": 150,
+					"teclado xyz": 75
+				}
+			],
+			"total_vendidos": 225
+		}
+	]
+}

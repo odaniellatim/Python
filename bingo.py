@@ -22,9 +22,7 @@ for numero in range(0, quantidade_numeros_bing):
 
 os.system('clear')
 
-
 def gerador_aleatorio():
-
     #gera um numero aleatório
     n = rd.randint(0,quantidade_numeros_bing)
     return gera_numero(n)

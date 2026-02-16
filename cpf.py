@@ -10,7 +10,6 @@ if entrada_e_sequencial:
   print('Você enviou dados sequenciais.')
   sys.exit()
 
-
 nove_digitos = cpf_usuario[:9]
 contador_regressivo_1 = 10
 
