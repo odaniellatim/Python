@@ -56,6 +56,20 @@ class Gerenciador_sistema:
                 return user.listar_itens_fatura(id_fatura, status_fatura)
         return []
     
+    # Adiciona novo historico de vendas 
+    def add_historico_vendas(self, user_id, id_registro, id_mes, produto_nome, mes_vendas, total_vendidos):
+        for user in self.usuarios:
+            user.add_histico_vendas_mes(user_id, id_registro, id_mes, produto_nome, mes_vendas, total_vendidos)
+            break
+    
+    # Listas o historico de vendas de acordo com o mês e usuario
+    def listar_historico_vendas(self, user_id, id_mes = None):
+        for hv in self.usuarios:
+            if(id_mes == None):
+                return hv.listar_historico_vendas(user_id)
+            else:
+                return hv.listar_historico_vendas(user_id, id_mes)
+        return []
 
 if __name__ == "__main__":
 
@@ -73,9 +87,9 @@ if __name__ == "__main__":
     produto2 = sys.add_produtos(2, 1, "Teclado xyz", 135.35, 70.99)
     produto3 = sys.add_produtos(3, 1, "Som xyz", 278.99, 169.99)
     produto4 = sys.add_produtos(4, 1, "Monitor xyz", 999.69, 475.98)
-
-    produto5 = sys.add_produtos(3, 1, "Som xyz", 278.99, 169.99)
-    produto6 = sys.add_produtos(4, 1, "Monitor xyz", 999.69, 475.98)
+    produto4 = sys.add_produtos(5, 1, "Cabo HDMI", 999.69, 475.98)
+    produto5 = sys.add_produtos(6, 1, "Som xyz", 278.99, 169.99)
+    produto6 = sys.add_produtos(7, 1, "Monitor xyz", 999.69, 475.98)
 
     # lista os produtos cadastrados pelo usuario
     listar_produto = sys.listar_produtos(1)
@@ -102,6 +116,14 @@ if __name__ == "__main__":
     imprimir_fat = sys.mostrar_items_faturas(1, 2, status) # user, fatura
     Escrita_na_tela.listar_faturas(imprimir_fat, mes=mes, status=status)
 
-    # Listar os items pagos.
 
-    # Listar os items pendentes
+    # adicionando novo historico de vendas    
+    hv1 = sys.add_historico_vendas(1, 1, 1, 'Mouse xyz', 'janeiro', 75)
+    hv2 = sys.add_historico_vendas(1, 2, 1, 'Cabo HDMI', 'janeiro', 65)
+    hv3 = sys.add_historico_vendas(1, 3, 1, 'Teclado xyz', 'janeiro', 150)
+    hv4 = sys.add_historico_vendas(1, 4, 2, 'Som xyz', 'fevereiro', 35)
+    hv5 = sys.add_historico_vendas(1, 5, 2, 'Monitor xyz', 'fevereiro', 15)
+
+    mes = 2
+    rs = sys.listar_historico_vendas(1, mes)
+    Escrita_na_tela.historico_venda(rs, mes)

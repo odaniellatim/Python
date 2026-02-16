@@ -97,78 +97,69 @@ class Escrita_na_tela:
 
     @staticmethod
     def historico_venda(lista_historico: list, mes=None, space=45):
-        titulo = f"HISTORICO DE VENDAS DO MÊS {mes}"
-        print("-" * space)
-        print(f"|{titulo.center(space)}|")
+        if(mes == None):
+            titulo = f"HISTORICO DE VENDAS DO ANUAL"
+            print("-" * space)
+            print(f"|{titulo.center(space)}|")
+        else:
+            titulo = f"HISTORICO DE VENDAS DO MÊS {mes}"
+            print("-" * space)
+            print(f"|{titulo.center(space)}|")
+
+        txt_legend = [
+            "ID registro", 
+            "Mês relatorio", 
+            "Nome produto", 
+            "Total itens vendidos", 
+            "Valor venda", 
+            "valor compra",
+            "Investimento",
+            "Resultado Vendas",
+            "Lucro",
+            "Resultado total vendido:",
+            "Resultado total investido:",
+            "Resultado do lucro total",
+            ]
+
+        total_valor_vendido = 0
+        total_valor_investido = 0
+        total_valor_lucro = 0           
         
-        txt_legend = ["ID", "Nome Produto", "Mês Relatorio", "Total Itens Vendidos", "Lucro R$", "Valor Total Vendidos R$"]
-        total_venda = 0
-        total_compra = 0
         
         if(lista_historico):
             for hv in lista_historico:
+
+                valor_total_vendas = hv['total_vendidos'] * hv['valor_venda']
+                total_pago = hv['total_vendidos'] * hv['valor_compra']
+                lucro = valor_total_vendas - total_pago
+
+                total_valor_vendido += valor_total_vendas
+                total_valor_investido += total_pago
+                total_valor_lucro += lucro
+
                 print("-" * space)
                 print("")
                 print(f"{txt_legend[0].ljust(space, '.')} {hv['id_registro']}")
-
-                print(f"{txt_legend[1].ljust(space, '.')} {hv['produto_nome']}")
-
-                print(f"{txt_legend[2].ljust(space, '.')} {hv['mes_nome']}")
-
-                print(f"{txt_legend[3].ljust(space, '.')} R$ {round(hv['total_vendidos'], 2)}")
-
-                print(f"{txt_legend[4].ljust(space, '.')} R$ {round(hv['lucro'], 2)}")
-
-                print(f"{txt_legend[5].ljust(space, '.')} R$ {round(hv['valor_total_vendas'], 2)}")
-                
+                print(f"{txt_legend[1].ljust(space, '.')} {hv['mes_nome']}")
+                print(f"{txt_legend[2].ljust(space, '.')} {hv['produto_nome']}")
+                print(f"{txt_legend[3].ljust(space, '.')} {round(hv['total_vendidos'], 2)}")
                 print("")
-            
-            lucro = total_venda - total_compra
+                print(f"{txt_legend[4].ljust(space, '.')} R$ {round(hv['valor_venda'], 2)}")
+                print(f"{txt_legend[5].ljust(space, '.')} R$ {round(hv['valor_compra'], 2)}")
+                print("")
+                print(f"{txt_legend[6].ljust(space, '.')} R$ {round(total_pago, 2)}")
+                print(f"{txt_legend[7].ljust(space, '.')} R$ {round(valor_total_vendas, 2)}")
+                print("")
+                print(f"{txt_legend[8].ljust(space, '.')} R$ {round(lucro, 2)}")
+
+                print("")
             print("_" * space)
             print(" ")
-            # print(f"{str(txt_legend[4].ljust(space, '.'))} R$ {round(total_venda, 2)}")
-            # print(f"{str(txt_legend[5].ljust(space, '.'))} R$ {round(total_compra, 2)}")
-            # print(f"{str(txt_legend[6].ljust(space, '.'))} R$ {round(lucro, 2)}")
+            print(f"{str(txt_legend[9].ljust(space, '.'))} R$ {round(total_valor_vendido, 2)}")
+            print(f"{str(txt_legend[10].ljust(space, '.'))} R$ {round(total_valor_investido, 2)}")
+            print(f"{str(txt_legend[11].ljust(space, '.'))} R$ {round(total_valor_lucro, 2)}")
             print(" ")
             print("_" * space)
         else:
             print("Nenhum produto cadastrado")
     
-    @staticmethod
-    def relatorio_vendas(lista_historico: list, mes=None, space=45):
-        titulo = f"HISTORICO DE VENDAS DO MÊS {mes}"
-        print("-" * space)
-        print(f"|{titulo.center(space)}|")
-        
-        txt_legend = ["ID Registro: ", "Nome Produto", "Mês Relatorio", "Total Itens Vendidos", "Lucro R$", "Valor Total Vendidos R$"]
-        total_venda = 0
-        total_compra = 0
-        
-        if(lista_historico):
-            for hv in lista_historico:
-                print("-" * space)
-                print("")
-                print(f"{txt_legend[0].ljust(space, '.')} {hv['id_registro']}")
-
-                print(f"{txt_legend[1].ljust(space, '.')} {hv['produto_nome']}")
-
-                print(f"{txt_legend[2].ljust(space, '.')} {hv['mes_nome']}")
-
-                print(f"{txt_legend[3].ljust(space, '.')} {round(hv['total_vendidos'], 2)}")
-
-                print(f"{txt_legend[4].ljust(space, '.')} R$ {round(hv['lucro'], 2)}")
-
-                print(f"{txt_legend[5].ljust(space, '.')} R$ {round(hv['valor_total_vendas'], 2)}")
-                
-                print("")
-            
-            lucro = total_venda - total_compra
-            print("_" * space)
-            print(" ")
-            # print(f"{str(txt_legend[4].ljust(space, '.'))} R$ {round(total_venda, 2)}")
-            # print(f"{str(txt_legend[5].ljust(space, '.'))} R$ {round(total_compra, 2)}")
-            # print(f"{str(txt_legend[6].ljust(space, '.'))} R$ {round(lucro, 2)}")
-            print(" ")
-            print("_" * space)
-        else:
-            print("Nenhum produto cadastrado")

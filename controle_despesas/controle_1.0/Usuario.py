@@ -87,25 +87,39 @@ class Usuario:
         for produto in self.lista_produtos:
             lucro += produto.valor_venda - produto.valor_compra
         return lucro
-            
+    
+    # Cadastra historico de vendas e adiciona os produtos se existir
     def add_histico_vendas_mes(self, user_id, id_registro, id_mes, produto_nome, mes_vendas, total_vendidos):
+        
         hv = Historico_vendas(user_id, id_registro, id_mes, produto_nome, mes_vendas, total_vendidos)
+
+        produto_encontrado = None
+        for p in self.lista_produtos:
+            if p.nome_produto == produto_nome:
+                produto_encontrado = p
+                break
+        
+        if produto_encontrado:
+            hv.produtos_vendidos.append(produto_encontrado)
+        else:
+            print(f"Aviso: Produto '{produto_nome}' não encontrado no catálogo!")
+
         self.historico_vendas.append(hv)
 
-    #TODO: Corrigir método para listar os items do relatorio
-    def resumo_vendas(self, user_id, id_mes):
-        relatorios_encontrados = []
-        
-        for hvv in self.historico_vendas:            
-            if (hvv.user_id == user_id):                
-                dados_do_mes = hvv.relatorio_de_vendas(id_mes)
-                
-                if (dados_do_mes): 
-                    relatorios_encontrados.extend(dados_do_mes)
-                else:
-                    print("Item vazio")
-        
-        return relatorios_encontrados # Isso retornará uma lista limpa de dicionários
+    # Lista os historico com os resultados de vendas e também do produto
+    def listar_historico_vendas(self, user_id, id_mes = None):
+        items = []
+
+        # Filtra os resultados por id mensal
+        if(id_mes != None):
+            for historico in self.historico_vendas:
+                if(historico.user_id == user_id and historico.id_mes == id_mes):
+                    items.append(historico.ht_relatorio_de_vendas())
+        else:
+            for historico in self.historico_vendas:
+                if(historico.user_id == user_id):
+                    items.append(historico.ht_relatorio_de_vendas())
+        return items
 
 
 if __name__ == "__main__":
@@ -129,9 +143,9 @@ if __name__ == "__main__":
     produto2 = user1.cadastrar_produtos(2, 1, "Teclado xyz", 135.35, 70.99)
     produto3 = user1.cadastrar_produtos(3, 1, "Som xyz", 278.99, 169.99)
     produto4 = user1.cadastrar_produtos(4, 1, "Monitor xyz", 999.69, 475.98)
-
-    produto5 = user1.cadastrar_produtos(3, 2, "Som xyz", 278.99, 169.99)
-    produto6 = user1.cadastrar_produtos(4, 2, "Monitor xyz", 999.69, 475.98)
+    produto4 = user1.cadastrar_produtos(5, 1, "Cabo HDMI", 999.69, 475.98)
+    produto5 = user1.cadastrar_produtos(6, 2, "Som xyz", 278.99, 169.99)
+    produto6 = user1.cadastrar_produtos(7, 2, "Monitor xyz", 999.69, 475.98)
 
     # Atualizando as informações do produto cadastrado. (Nome, valor de compra, valor de venda)
     # alt1 = user1.atualizar_produto(1, 1, "Maquina de Lavar", 1_350.75, 875.92)
@@ -148,13 +162,12 @@ if __name__ == "__main__":
     hv1 = user1.add_histico_vendas_mes(1, 1, 1, 'Mouse xyz', 'janeiro', 75)
     hv2 = user1.add_histico_vendas_mes(1, 2, 1, 'Cabo HDMI', 'janeiro', 65)
     hv3 = user1.add_histico_vendas_mes(1, 3, 1, 'Teclado xyz', 'janeiro', 150)
-    hv4 = user1.add_histico_vendas_mes(1, 4, 1, 'Som xyz', 'janeiro', 35)
-    hv5 = user1.add_histico_vendas_mes(1, 5, 1, 'Monitor xyz', 'janeiro', 15)
+    hv4 = user1.add_histico_vendas_mes(1, 4, 2, 'Som xyz', 'fevereiro', 35)
+    hv5 = user1.add_histico_vendas_mes(1, 5, 2, 'Monitor xyz', 'fevereiro', 15)
 
-    relatorio = user1.resumo_vendas(1, 1)
+    relatorio = user1.listar_historico_vendas(1)
     print(relatorio)
-
-    Escrita_na_tela.relatorio_vendas(relatorio)
+    Escrita_na_tela.historico_venda(relatorio)
 
     # fat = user1.listar_faturas(1)    
     # Escrita_na_tela.listar_faturas(items, status="pendente", mes=1)

@@ -7,7 +7,6 @@ class Catalogo_produtos:
         self.nome_produto = nome_produto
         self.valor_venda = valor_venda
         self.valor_compra = valor_compra
-        ...
     
     # Lista os produtos cadastrados por usuario
     def listar_produtos(self, id_user):        
