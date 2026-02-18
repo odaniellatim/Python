@@ -1,0 +1,10 @@
+{
+    "id_user": 1,
+    "nome_usuario": "Daniel",
+    "user_name": "odaniel",
+    "senha": "1234",
+    "nivel_usuario": "admin",
+    "lista_produtos": [],
+    "historico_vendas": [],
+    "lista_de_faturas": []
+}

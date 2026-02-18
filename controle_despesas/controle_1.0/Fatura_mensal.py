@@ -106,7 +106,7 @@ class Fatura_mensal:
                         'alterado'
                     ]
         return []
-            
+
 
 if __name__ == "__main__":
     jan = Fatura_mensal(1, 1, "janeiro")

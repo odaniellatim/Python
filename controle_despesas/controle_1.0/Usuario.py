@@ -121,7 +121,6 @@ class Usuario:
                     items.append(historico.ht_relatorio_de_vendas())
         return items
 
-
 if __name__ == "__main__":
     user1 = Usuario(1, "daniel", "odaniel", "123456")
 
@@ -166,8 +165,7 @@ if __name__ == "__main__":
     hv5 = user1.add_histico_vendas_mes(1, 5, 2, 'Monitor xyz', 'fevereiro', 15)
 
     relatorio = user1.listar_historico_vendas(1)
-    print(relatorio)
-    Escrita_na_tela.historico_venda(relatorio)
+    # Escrita_na_tela.historico_venda(relatorio)
 
     # fat = user1.listar_faturas(1)    
     # Escrita_na_tela.listar_faturas(items, status="pendente", mes=1)
