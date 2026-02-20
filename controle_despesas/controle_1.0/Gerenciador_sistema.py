@@ -1,7 +1,6 @@
 from Usuario import Usuario
 from BD import Banco_de_dados
-
-from Escrita_na_tela import Escrita_na_tela
+from datetime import date
 
 class Gerenciador_sistema:
     def __init__(self) -> None:
@@ -51,19 +50,19 @@ class Gerenciador_sistema:
             return "Fatura adicionada com sucesso"
         
     # Cadastrar uma despesa em uma fatura cadastrada
-    def add_items_fatura(self, id_item, id_fatura, id_user, nome_despesa, valor_pago, dia, mes, status_pagamento):
+    def add_items_fatura(self, id_item, id_fatura, id_user, nome_despesa, valor_pago, data_vencimento, status_pagamento):
         for user in self.usuarios:
             if(user.id_user == id_user):
                 for fatura in user.lista_de_faturas:
-                    if fatura.id_fatura == id_fatura:
-                        fatura.adicionar_despesa(id_item, id_fatura, id_user, nome_despesa, valor_pago, dia, mes, status_pagamento)
+                    if fatura.fatura_id == id_fatura:
+                        fatura.fatura_add_despesas(id_item, id_fatura, nome_despesa, valor_pago,data_vencimento, status_pagamento)
                         break
     
     # Listar todas as despesas cadastradas no sistema, podendo separar por status (pago, pendente)
     def mostrar_items_faturas(self, id_user: int, id_fatura: int, status_fatura: str) -> list:
         for user in self.usuarios:
             if(user.id_user == id_user):
-                return user.listar_itens_fatura(id_fatura, status_fatura)
+                return user.lista_de_faturas # Deve precisar corrigir 
         return []
     
     # Adiciona novo historico de vendas 
@@ -116,11 +115,11 @@ class Gerenciador_sistema:
                 print(f"Nome: {user.nome_usuario.title()}")
 
                 for fat in user.lista_de_faturas:
-                    print(f"-- Mês: {fat.mes_fatura.title()}")
+                    print(f"-- Mês: {str(fat._fatura_mes_nome).title()}")
 
-                    for i in fat.items:
-                        print(f"--- Despesa: {i.nome_despesa.title()}")
-                        i.data_vencimento
+                    for i in fat.items_despesa:
+                        print(f"--- Despesa: {i.item_nome_despesa.title()}")
+                        i.item_data_vencimento
                     
 
 
@@ -158,11 +157,11 @@ if __name__ == "__main__":
     # fatura6 = sys.cadastrar_fatura(6, 1, 'julho')
 
     #Add items fatura referente ao mês cadastrado pelo usuario
-    item_1 = sys.add_items_fatura(1, 1,  1,  "Luz", 175.89,  13,   1,   'pendente')
-    item_2 = sys.add_items_fatura(2, 2, 1,  "Gás", 125.25, 20, 1, 'pago')
-    item_3 = sys.add_items_fatura(3, 3, 1,  "Mercado", 468.89, 25, 1, 'pendente')
-    item_4 = sys.add_items_fatura(4, 1, 1,  "Cartão Credito", 2190.65, 19, 1, 'pago')
-    item_5 = sys.add_items_fatura(5, 2, 1,  "Carrefour", 650.65, 19, 1, 'pago')
+    # item_1 = sys.add_items_fatura(1, 1,    "Luz", 175.89, date.today(),   'pendente')
+    # item_2 = sys.add_items_fatura(2, 2,  "Gás", 125.25, 20, 1, 'pago')
+    # item_3 = sys.add_items_fatura(3, 3,  "Mercado", 468.89, 25, 1, 'pendente')
+    # item_4 = sys.add_items_fatura(4, 1,  "Cartão Credito", 2190.65, 19, 1, 'pago')
+    # item_5 = sys.add_items_fatura(5, 2,  "Carrefour", 650.65, 19, 1, 'pago')
 
     # Lista os items cadastrados na fatura usando o ID
     # status = 'pago'

@@ -1,7 +1,8 @@
 from Catalogo_produtos import Catalogo_produtos
-from Fatura_mensal import Fatura_mensal
+from Fatura_mensal import FaturaMensal
 from Historico_vendas import Historico_vendas
 from Escrita_na_tela import Escrita_na_tela
+from datetime import date
 
 class Usuario:
     def __init__(self,id_user, nome_usuario, user_name, senha, nivel_usuario = "admin") -> None:
@@ -12,12 +13,12 @@ class Usuario:
         self.nivel_usuario = nivel_usuario
         self.lista_produtos: list[Catalogo_produtos] = []
         self.historico_vendas: list[Historico_vendas] = []
-        self.lista_de_faturas: list[Fatura_mensal] = []
+        self.lista_de_faturas: list[FaturaMensal] = []
 
     # Cria uma fatura mensal para o ID do usuario
     def adicionar_fatura_mensal(self,id_fatura, id_user, mes_fatura: str):
         if(id_user == self.id_user):
-            nova_fatura = Fatura_mensal(id_fatura, id_user, mes_fatura)
+            nova_fatura = FaturaMensal(id_fatura, id_user, mes_fatura)
             self.lista_de_faturas.append(nova_fatura)
             return self.lista_de_faturas
 
@@ -26,29 +27,29 @@ class Usuario:
         faturas_nome = []
         for lista in self.lista_de_faturas:
             if(lista.user_id == id_user):
-                faturas_nome.append(lista.listar_nome_fatura(id_user))
+                faturas_nome.append(lista.fatura_mes_nome)
             else:
                 Escrita_na_tela.alerta("Usuario não encontrado.")
                 break
         return faturas_nome
     
     # Adiciona os items referente a fatura e o id do usuario.
-    def add_items_fatura(self, id_item, id_fatura, user_id, nome_despesa, valor_pago, dia, mes, status_pagamento):
+    def add_items_fatura(self, id_item, id_fatura, nome_despesa, valor_pago, data, status_pagamento):
         for lista in self.lista_de_faturas:
-            lista.adicionar_despesa(id_item, id_fatura, user_id, nome_despesa, valor_pago, dia, mes, status_pagamento)
+            lista.fatura_add_despesas(id_item, id_fatura, nome_despesa, valor_pago, data, status_pagamento)
     
     # Listar os items referente o id da fatura.
     def listar_itens_fatura(self, id_fatura: int, status: str|None = None):
     
         if not(status == None):
             for item in self.lista_de_faturas:
-                if (item.id_fatura == id_fatura):
-                    itens_cadastrado = item.listar_items_fatura(status.lower())
+                if (item.fatura_id == id_fatura):
+                    itens_cadastrado = item.fatura_listar_despesas()
                     return itens_cadastrado
         else:
             for item in self.lista_de_faturas:
-                if(item.id_fatura == id_fatura):
-                    itens_cadastrado = item.listar_items_fatura()
+                if(item.fatura_id == id_fatura):
+                    itens_cadastrado = item.fatura_listar_despesas()
                     return itens_cadastrado
         return []
             
@@ -131,11 +132,11 @@ if __name__ == "__main__":
     # user1.adicionar_fatura_mensal('abril')
 
     #Add items fatura referente ao mês cadastrado pelo usuario
-    item_1 = user1.add_items_fatura(1, 1, 1,  "Luz", 175.89,  13,   1,   'pendente')
-    item_2 = user1.add_items_fatura(2, 1, 1,  "Gás", 125.25, 20, 1, 'pago')
-    item_3 = user1.add_items_fatura(3, 1, 1,  "Mercado", 468.89, 25, 1, 'pendente')
-    item_4 = user1.add_items_fatura(4, 1, 1,  "Cartão Credito", 2190.65, 19, 1, 'pago')
-    item_5 = user1.add_items_fatura(5, 1, 1,  "Carrefour", 650.65, 19, 1, 'pago')
+    item_1 = user1.add_items_fatura(1, 1,   "Luz", 175.89,  date.today(),   'pendente')
+    item_2 = user1.add_items_fatura(2, 1,  "Gás", 125.25, date.today(), 'pago')
+    item_3 = user1.add_items_fatura(3, 1, "Mercado", 468.89, date.today(), 'pendente')
+    item_4 = user1.add_items_fatura(4, 1,  "Cartão Credito", 2190.65, date.today(), 'pago')
+    item_5 = user1.add_items_fatura(5, 1, "Carrefour", 650.65, date.today(), 'pago')
 
     # Add produtos que serão vendidos pelo usuario cadastrado.
     produto1 = user1.cadastrar_produtos(1, 1, "Mouse xyz", 99.99, 35.36)

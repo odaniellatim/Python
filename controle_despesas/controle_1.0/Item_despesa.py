@@ -1,15 +1,15 @@
 from datetime import date
+import locale
 import re
 
-class Item_despesa:
-    
-    def __init__(self,id_item, id_fatura, nome_despesa, valor_pago, data_vencimento, status_pagamento) -> None:
-        self._item_id = id_item
-        self._fatura_id = id_fatura
-        self._item_nome_despesa = nome_despesa
-        self._item_valor_pago =  valor_pago
+class ItemDespesa:
+    def __init__(self,id_item: int, id_fatura: int, nome_despesa: str, valor_pago: float, data_vencimento: date, status_pagamento: str) -> None:
+        self._item_id: int = id_item
+        self._fatura_id: int = id_fatura
+        self._item_nome_despesa: str = nome_despesa
+        self._item_valor_pago: float =  valor_pago
         self._item_data_vencimento: date = data_vencimento
-        self._item_status_pagamento = status_pagamento
+        self._item_status_pagamento: str = status_pagamento
 
     @property
     def item_id(self):
@@ -44,7 +44,7 @@ class Item_despesa:
     
     @property
     def item_valor_pago(self):
-        return round(self._item_valor_pago, 2)
+        return self._item_valor_pago
     
     @item_valor_pago.setter
     def item_valor_pago(self, novo_valor_item):
@@ -55,8 +55,8 @@ class Item_despesa:
             print(f"{self.item_nome_despesa} teve seu valor alterado para R$ {self.item_valor_pago:.2f} com sucesso!")   
 
     @property
-    def item_data_vencimento(self) -> str:
-        return date.strftime(self._item_data_vencimento,"%d/%m/%Y")
+    def item_data_vencimento(self) -> date:
+        return self._item_data_vencimento
 
     @item_data_vencimento.setter
     def item_data_vencimento(self, nova_data_vencimento):
@@ -76,6 +76,11 @@ class Item_despesa:
             raise ValueError(f"Insira uma data valida. Use um dos formatos: DD-MM-YYYY | DD/MM/YYYY.")
         
         print(f"{self.item_nome_despesa} com a data de vencimento: {data_atual} foi alterado para {self.item_data_vencimento}")
+
+    @property
+    def item_mes_vencimento_numero(self):
+        data_completa = self._item_data_vencimento.strftime("%m")
+        return int(data_completa)
 
     @property
     def item_status_pagamento(self):
@@ -101,17 +106,18 @@ class Item_despesa:
 
     @property
     def listar_items_formatado(self):
-        legenda = ["ID Item.", "Descrição", "Valor R$", "Data vencimento" ]
+        legenda = ["ID fatura", "ID despesa.", "Status pagamento","Descrição", "Valor R$", "Data vencimento" ]
         space = 50
 
         print('.' * (space+10))
         print("")
-        print(f"{legenda[0].ljust(space, "_")} {self.fatura_id}")
-        print(f"{legenda[1].ljust(space, "_")} {self.item_nome_despesa}")
-        print(f"{legenda[2].ljust(space, "_")} {self.item_valor_pago:.2f}")
-        print(f"{legenda[3].ljust(space, "_")} {self.item_data_vencimento}")
+        print(f"{legenda[0].ljust(space, "_")} {self.fatura_id:02d}")
+        print(f"{legenda[1].ljust(space, "_")} {self.item_id:02d}")
+        print(f"{legenda[2].ljust(space, "_")} {self.item_status_pagamento}")
+        print(f"{legenda[3].ljust(space, "_")} {self.item_nome_despesa}")        
+        print(f"{legenda[4].ljust(space, "_")} {locale.currency(self.item_valor_pago, grouping=True)}")
+        print(f"{legenda[5].ljust(space, "_")} {date.strftime(self._item_data_vencimento,"%d/%m/%Y")}")
         print("")
-        print('.' * (space+10))
     
     def listar_dados_item_obj(self):
         obj = {
@@ -125,13 +131,13 @@ class Item_despesa:
         return obj
 
 if __name__ == "__main__":
-    item = Item_despesa(1, 1,"telEFone",150.00, date.today(),"pendente")
+    # Seta a localização das datas e moedas
+    locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
 
+    item = ItemDespesa(1, 1,"telEFone",150.00, date.today(),"pendente")
+    print(f"DAta: {item.item_mes_vencimento_numero}")
     try:
         item.item_nome_despesa = "MAracuJA"
-
-        item.listar_items_formatado
-        print(f"\n{item.listar_dados_item_obj()}\n")
-
+        print(item.item_valor_pago)
     except ValueError as e:
         print(f"Erro: {e}")

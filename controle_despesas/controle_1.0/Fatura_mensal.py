@@ -1,135 +1,154 @@
-from Escrita_na_tela import Escrita_na_tela
-from Item_despesa import Item_despesa
+from datetime import date
+import locale
+import calendar
+from Item_despesa import ItemDespesa
 
-class Fatura_mensal:
+class FaturaMensal:
 
-    def __init__(self, id_fatura, user_id, mes_fatura) -> None:
-        self.id_fatura = id_fatura
-        self.user_id = user_id
-        self.mes_fatura = mes_fatura
-        self.items: list[Item_despesa] = [] # Item_despesa() 
+    def __init__(self, fatura_id, user_id, fatura_nome_mes) -> None:
+        self.fatura_id = fatura_id
+        self._user_id = user_id
+        self._fatura_mes_nome: date = fatura_nome_mes
+        self.items_despesa: list[ItemDespesa] = [] # Item_despesa() 
     
-    def listar_nome_fatura(self, id_user):
-        if(id_user == self.user_id):
-            return self.mes_fatura
-
-    def adicionar_despesa(self,id_item, id_fatura, id_user, nome_despesa, valor_pago, dia, mes, status_pagamento):
-        despesa = Item_despesa(id_item, id_fatura, id_user, nome_despesa, valor_pago, dia, mes, status_pagamento)
-        self.items.append(despesa)
-        return self.items
+    @property
+    def user_id(self):
+        return self._user_id
     
-    def remover_item_fatura(self,id_user, id_despesa):
-        item_removido = []
-        for item in self.items:
-            if(item.id_item == id_despesa and item.id_fatura == id_user):
-                # print(f"{item.nome_despesa } apagado com sucesso.")
-                item_removido.append(item.nome_despesa)
-                item_removido.append('removido')
-                self.items.remove(item)
-                break
-        return item_removido
+    @property
+    def fatura_mes_nome(self):
+        return date.strftime(self._fatura_mes_nome, "%B")
+    
+    @property
+    def fatura_mes_numero(self):
+        return date.strftime(self._fatura_mes_nome, "%m")
+    
+    def fatura_add_despesas(self, id_item, id_fatura, nome_despesa, valor_pago, data_vencimento, status_pagamento):
+        add_despesa = ItemDespesa(id_item, id_fatura, nome_despesa, valor_pago, data_vencimento, status_pagamento)
+        self.items_despesa.append(add_despesa)
+        return self.items_despesa
 
-    def listar_items_fatura(self, status: str | None = None) -> list:
-        
-        total_fatura = 0
-        total_items_fatura = []
-        
-        if (status != None):
-            for item in self.items:
-                if(item.status_pagamento == status):                 
-                    total_fatura += item.valor_pago;
-                    total_items_fatura.append({
-                        "id": item.id_item,
-                        "nome_despesa": item.nome_despesa,
-                        "valor_pago": item.valor_pago,
-                        "dia_vencimento": item.dia_vencimento,
-                        "mes_vencimento": item.mes_vencimento,
-                        "status_pagamento": item.status_pagamento,
-                        "total_fatura": total_fatura,
-                    })
-            return total_items_fatura
-        else:
-            for item in self.items:                 
-                total_fatura += item.valor_pago;
-                total_items_fatura.append({
-                    "id": item.id_item,
-                    "nome_despesa": item.nome_despesa,
-                    "valor_pago": item.valor_pago,
-                    "dia_vencimento": item.dia_vencimento,
-                    "mes_vencimento": item.mes_vencimento,
-                    "status_pagamento": item.status_pagamento,
-                    "total_fatura": total_fatura,
-                })
-            return total_items_fatura
- 
-    def alterar_dia_item_fatura(self, id_despesa, nova_data):
-        item_alterado = []
-        if(nova_data >=1 and nova_data <= 31):
-            for item in self.items: 
+    def fatura_listar_despesas(self, fatura_id: int = 0, despesa_mes: int = 0):
+        valor_total = 0
+
+        if(fatura_id != 0 and despesa_mes != 0):
+            # Lista todas as despesas disponiveis filtrando por mes_vencimento e fatura id
+                print(f"Lista de despesas do mês {calendar.month_name[despesa_mes].title()} e com a fatura ID {fatura_id}")
+
+                for despesa in self.items_despesa:
+                    if(despesa.item_mes_vencimento_numero == despesa_mes and despesa.fatura_id == fatura_id ):
+                        valor_total += float(despesa.item_valor_pago)
+                        despesa.listar_items_formatado
+                            
+        elif(fatura_id != 0):
+            # Lista todas as despesas disponiveis filtrando por fatura_id
+                print(f"Lista de despesas da fatura com ID: {fatura_id}")
+                count = []
+
+                for despesa in self.items_despesa:        
+                    if(despesa.fatura_id == fatura_id):
+                        count.append(despesa.fatura_id)
+                        if(len(count) > 0): 
+                            valor_total += float(despesa.item_valor_pago)
+                            despesa.listar_items_formatado
+                        else:
+                            raise ValueError(f"Fatura com ID: {fatura_id} nenhuma despesa encontrada.")
                 
-                if(item.id_item == id_despesa and nova_data != item.dia_vencimento):
-                    item_alterado.append(item.nome_despesa)
-                    item_alterado.append('alterado')
-                    item.alterar_dia_vencimento(nova_data)
-                    return item_alterado
-                else:
-                    Escrita_na_tela.alerta("Informe uma data diferente da já cadastrada.")
-                    break
-        else:
-            Escrita_na_tela.alerta("Informe uma data maior que 0 e menor que 31")
-        return item_alterado
-        
-    def altear_mes_item_fatura(self, id_despesa, nova_data):
-        item_alterado = []
-        if(nova_data >= 1 and nova_data <= 12):
-            for mes in self.items:
-                if(mes.id_item == id_despesa and mes.mes_vencimento != nova_data):
-                    item_alterado.append(mes.nome_despesa)
-                    item_alterado.append('alterado')
-                    mes.alterar_mes_vencimento(nova_data)
-                    return item_alterado
-                else:
-                    Escrita_na_tela.alerta("Informe uma data diferente da já cadastrada.")
-                    break
-        else:
-            Escrita_na_tela.alerta("Informe um numero do mês valido.")
-        return item_alterado
+        elif(despesa_mes != 0):
+            if(despesa_mes > 0 and despesa_mes <= 12 ):
+                # Lista todas as despesas disponiveis filtrando por fatura_id
+                print(f"Lista de despesas com vencimento no mês: {calendar.month_name[despesa_mes].title()}")
+                for despesa in self.items_despesa:
+                    if(despesa.item_mes_vencimento_numero == despesa_mes):
+                        valor_total += float(despesa.item_valor_pago)
+                        despesa.listar_items_formatado
+            else:
+               raise ValueError(f"Mês não encontrado. Informe um numero entre 1 - 12.")
 
-    def alterar_status_item_fatura(self, id_item, status):
- 
-        for item in self.items:
-            if(item.id_item == id_item):
-                item_alterado = item.alterar_status_item(status)
-                if(item_alterado):
-                    return [
-                        item.nome_despesa,
-                        'alterado'
-                    ]
-        return []
+        else:
+            # Lista com todas as despesas disponiveis sem filtro
+            print("Lista de despesas pendentes e pagas")
+            for despesa in self.items_despesa:
+                valor_total += float(despesa.item_valor_pago)
+                despesa.listar_items_formatado
+
+        txt_desc = "Valor total a pagar:"
+        print(f"{txt_desc.ljust(50, "_")} {locale.currency(valor_total, grouping=True)}")
+    
+    def fatura_listar_valor_total_mes(self):
+        print("Relatorio dos valores pagos mensalmente.")
+        print("-" * 50)
+        relatorio_mes = {}
+        
+        for despesa in self.items_despesa:                        
+            mes = despesa.item_data_vencimento.strftime("%m")
+            
+            if(mes not in relatorio_mes):               
+                relatorio_mes[mes] = []         
+            relatorio_mes[mes].append(despesa.item_valor_pago) 
+
+        for mes, valores in relatorio_mes.items():
+            print(f"Mês: {calendar.month_name[int(mes)].title().ljust(50, ("."))}Total: {locale.currency(sum(valores), grouping=True)}")
+
+    def fatura_remover_despesa(self, id_despesa):
+        item_removido = []
+
+        for rm_despesa in self.items_despesa:
+            if(rm_despesa.item_id ==id_despesa):
+                print(f"Item ({rm_despesa.item_nome_despesa}) removido com sucesso.")
+                item_removido.append(rm_despesa.item_nome_despesa)
+                self.items_despesa.remove(rm_despesa)
+        if(len(item_removido) == 0):
+            raise ValueError(f"Item com o ID {id_despesa} não encontrado.")
+
+    def fatura_alterar_status_item_despesa(self, id_despesa, status_despesa):
+        status_pagamento_despesa = status_despesa.upper()
+        for despesa in self.items_despesa:
+            if(despesa.item_id == id_despesa):
+                if(despesa.item_status_pagamento != status_pagamento_despesa):
+                    despesa.item_status_pagamento = status_pagamento_despesa
+                else:
+                    raise ValueError(f"Não foi possivel alterar o status do pagamento. Informe um status diferente do informado.")
 
 
 if __name__ == "__main__":
-    jan = Fatura_mensal(1, 1, "janeiro")
+    try:
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        jan = FaturaMensal(1, 1, date.today())
 
-                                # id_item - id_fatura - nome - valor - dia - mes - status
-    item_1 = jan.adicionar_despesa(1, 1, 1,  "Luz", 175.89,  13,   1,   'pendente')
-    item_2 = jan.adicionar_despesa(2, 1, 1, "Gás", 125.25, 20, 1, 'pago')
-    item_3 = jan.adicionar_despesa(3, 1, 1, "Mercado", 468.89, 25, 1, 'pendente')
-    item_4 = jan.adicionar_despesa(4, 2, 1, "Cartão Credito", 2190.65, 19, 1, 'pago')
-    item_5 = jan.adicionar_despesa(5, 2, 1, "Carrefour", 650.65, 19, 1, 'pago')
-    
-    
-    # item_removido = jan.remover_item_fatura(1, 2)
-    # item_alterado_dia = jan.alterar_dia_item_fatura(2, 30)
-    # item_alterado_mes = jan.altear_mes_item_fatura(2, 3)
-    # alterar_status_item = jan.alterar_status_item_fatura(4,'Pendente')
-    
-    # Escrita_na_tela.msg(item_removido)
-    # Escrita_na_tela.msg(item_alterado_dia)
-    # Escrita_na_tela.msg(item_alterado_mes)
-    # Escrita_na_tela.msg(alterar_status_item)
+        fatura_id1 = 1
+        fatura_id2 = 2
 
-    fat01 = jan.listar_items_fatura(status="pendente")
-    Escrita_na_tela.listar_faturas(fat01, mes=2, status="pendente")
+        mes_fatura1 = 1
+        mes_fatura2 = 2
+        mes_fatura3 = 3
 
+                                    # id_item - id_fatura - nome - valor - data - status
+        item_1 = jan.fatura_add_despesas(1, fatura_id1,"Luz", 175.89,  date(2026, 1, 2), 'pendente')
+        item_2 = jan.fatura_add_despesas(2, fatura_id2, "Gás", 125.25, date(2026, 2, 7), 'pago')
+        item_3 = jan.fatura_add_despesas(3, fatura_id1, "Mercado", 468.89, date(2026, 3, 10), 'pendente')
+        item_4 = jan.fatura_add_despesas(4, fatura_id2, "Cartão Credito", 2190.65, date(2026, 2 , 15), 'pago')
+        item_5 = jan.fatura_add_despesas(5, fatura_id1, "Carrefour", 650.65, date(2026, 1, 20), 'pago')
+
+        # print("-" * 70)
+        # print(f"{jan.fatura_mes_nome} | {jan.fatura_mes_numero}") 
+
+        # print("-" * 70)
+        # jan.fatura_listar_despesas(despesa_mes=2)
+        
+        print("-" * 70)
+        jan.fatura_listar_valor_total_mes()
+
+        print("-" * 70)
+        jan.fatura_remover_despesa(3)
+        jan.fatura_alterar_status_item_despesa(2, "pendente")
+        
+        print("-" * 70)
+        jan.fatura_listar_despesas(despesa_mes=2)
     
+    except ValueError as e:
+        print(f"Erro: {e}")
+    
+    
+    except locale.Error as e:
+        print(f"Locale error: {e}")
