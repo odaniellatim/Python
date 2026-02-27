@@ -62,8 +62,10 @@ def cadastrar():
         json.dump(cadastros, arquivo, indent=4)
 
 
-def menu():    
-    opcoes = ["Cadastrar", "Listar", "Sair"]    
+def menu():
+    
+    opcoes = ["Cadastrar", "Listar", "Sair"]
+    
     for number, opcao in enumerate(opcoes):
         print(f"{number}. {opcao}")
         

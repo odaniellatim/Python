@@ -1,36 +1,91 @@
-"""
-Página de teste de codigos Python
-"""
 
-class ClassePrincipal:
-    def __init__(self, numero1, numero2):
-        self.numero1 = numero1
-        self.numero2 = numero2
-
-    def result_num1(self):
-        return self.numero1
-    
-    def result_num2(self):
-        return self.numero2
-    
-class SubClasse(ClassePrincipal):
-    def __init__(self, numero1, numero2):
-        super().__init__(numero1, numero2)
+# --- Camada VIEW ---
+class TerminalView:         
+    def exibir_resultado_soma(self, dado):
+        print("."*100)
+        print("")
+        print(f"O resultado é: {dado}")
+        print("")
+        print("."*100)
         
-def tabela():
-    titulo = ["Gás", "Luz", "Água"]
-    descrição = ["Conta de gás", "Conta de luz", "Conta de água"]
-    valor = [150,252,150]
-    headline = ["TITULO", "DESCRIÇÃO", "VALOR R$"]
-    return f"""
-
-    |{str(headline[0]).center(10)}|{str(headline[1]).center(30)}|{str(headline[2]).center(5)}|
-    -----------------------------------------------------------------------------------------
-    |{str(titulo[0]).center(10)}|{str(descrição[0]).center(30)}|{str(valor[0]).center(5)}|
-    |{str(titulo[1]).center(10)}|{str(descrição[1]).center(30)}|{str(valor[1]).center(5)}|
-    |{str(titulo[2]).center(10)}|{str(descrição[2]).center(30)}|{str(valor[2]).center(5)}|
-
-"""
+    def exibir_resultado_multiplicar(self, dado):
+        print("."*100)
+        print("")
+        print(f"O resultado é: {dado}")
+        print("")
+        print("."*100)
         
-if __name__ == "__main__":    
-    print(tabela())
+    def menu_principal(self):
+        """Menu principal do software onde estarta o programa"""
+        print("Menu Principal")
+        print("")
+        print("1. Realizar a soma: ")
+        print("2. Realizar a multiplicação: ")
+        print("0. Fechar programa")
+        print("")
+        opt = int(input("Selecione uma opção: "))
+        return opt
+
+# --- Camada MODEL ---
+class CalculadoraModel:
+    def somar(self, a, b):
+        return a + b
+
+    def multiplicar(self, a, b):
+        return a * b
+    
+# --- Camada CONTROLLER (O Agregador) ---
+class CalculadoraController:
+    def __init__(self, model_recebido, view_recebida):
+        # Aqui acontece a AGREGAÇÃO: 
+        # O Controller guarda as instâncias para usar depois
+        self.model = model_recebido 
+        self.view = view_recebida
+
+    def executar_soma(self, v1, v2):
+        """ Executa a soma entre dois numeros"""
+        # Aqui acontece a ASSOCIAÇÃO: 
+        # O Controller chama métodos do Model e da View
+        resultado = self.model.somar(v1, v2)
+        self.view.exibir_resultado_soma(resultado)
+
+    def executar_multiplicar(self, v1, v2):
+        """ Executa a multiplicação  entre dois numeros"""
+        # Aqui acontece a ASSOCIAÇÃO: 
+        # O Controller chama métodos do Model e da View
+        resultado = self.model.multiplicar(v1, v2)
+        self.view.exibir_resultado_multiplicar(resultado)
+
+# --- INICIALIZAÇÃO (Main) ---
+meu_model = CalculadoraModel()
+minha_view = TerminalView()
+
+# Passamos os objetos prontos para o Controller
+app = CalculadoraController(meu_model, minha_view)
+
+# Transforma o menu em um loop
+while(True):
+    teste = CalculadoraModel()    
+    opcao = minha_view.menu_principal()
+
+    if(opcao == 1):
+       num1 = input("")
+      
+    if(opcao == 1):               
+        num1 = input("Informe o primeiro numero: ")
+        num2 = input("Informe o segundo numero: ")
+        
+        app.executar_soma(int(num1), int(num2))
+
+    if(opcao == 2):               
+        num1 = input("Informe o primeiro numero: ")
+        num2 = input("Informe o segundo numero: ")
+        
+        app.executar_multiplicar(int(num1), int(num2))
+        
+    elif(opcao == 0):
+        exit()
+
+
+
+        
