@@ -68,13 +68,12 @@ def listar_items(file_name):
                     i = [db]
             except json.JSONDecodeError:
                 i = []
-
     return i
 
 
 def save(data: dict, file_name: str) -> str | None:
     with open(file_name, "w", encoding="utf-8") as f:
-        db_json = json.dumps(data, indent=2, sort_keys=True)
+        db_json = json.dumps(data, indent=2, sort_keys=False)
         f.write(db_json)
         fmt.tabela_vertical(2, alerta("Dados salvos com sucesso"))
 

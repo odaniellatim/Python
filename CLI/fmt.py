@@ -67,15 +67,20 @@ def draw_table(n_colunas: int, objeto: list) -> None:
         else:
             item_value = list(item.values())
             for value in item_value:
-                print(f"|{str(value).center(caracteres, " ").title()}", end="")
-
+                
+                if isinstance(value, float):
+                    valor = f"R$ {str(value)}"
+                    print(f"|{valor.center(caracteres, " ").title()}", end="")
+                else:
+                    print(f"|{str(value).center(caracteres, " ").title()}", end="")
             print("", end="|")
             print("")
             print("—" * divisoria)
 
 
 def tabela_horizontal(numero_colunas, lista_objeto):
-    print(lista_objeto)
+    # Falta construir a tabela com o um codigo mais otimizado.
+    pass
 
 def tabela_vertical(numero_colunas: int, lista_objeto: list):
 

@@ -1,26 +1,40 @@
 [
   {
-    "medida": "kg",
     "nome": "Banana",
-    "preco": 15.99,
-    "quantidade": 2
+    "medida": "kg",
+    "quantidade": 2,
+    "preco": 15.99
   },
   {
-    "medida": "kg",
     "nome": "Batata",
-    "preco": 27.99,
-    "quantidade": 2
+    "medida": "kg",    
+    "quantidade": 2,
+    "preco": 27.99
+    
   },
   {
-    "medida": "kg",
     "nome": "Melancia",
-    "preco": 27.9,
-    "quantidade": 3
+    "medida": "kg",    
+    "quantidade": 3,
+    "preco": 27.9
   },
   {
-    "medida": "kg",
     "nome": "File de Frango",
-    "preco": 22.5,
-    "quantidade": 2
+    "medida": "kg",    
+    "quantidade": 2,
+    "preco": 22.5
+  },
+  {
+    "nome": "Beterraba",
+    "medida": "kg",    
+    "quantidade": 2,
+    "preco": 15.99
+  },
+  {
+    "nome": "P\u00e3o",
+    "medida": "g",
+    "quantidade": 350,
+    "preco": 7.9
+    
   }
 ]
