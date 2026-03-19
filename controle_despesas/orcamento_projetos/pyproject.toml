@@ -1,0 +1,5 @@
+[tool.pyright]
+extraPaths = ["src"]
+
+[tool.pylsp]
+plugins.jedi.environment = null

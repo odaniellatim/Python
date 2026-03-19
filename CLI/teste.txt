@@ -1,0 +1,28 @@
+[H[2J[3Jusage: Controle de despesas
+
+Transforma o valor do produto pegando sua quantidade, seja em {g, kg, l,
+unidade} e transforma em valor (R$) em uma proporção menor de uso.
+
+options:
+  -h, --help            show this help message and exit
+  -n STRING, --nome STRING
+                        Nome do produto
+  -m STRING, --medida STRING
+                        Unidade de medida disponiveis -> ['g','kg','mg','l',
+                        'unidade']
+  -q QUANTIDADE, --quantidade QUANTIDADE
+                        Quantidade que vem no produto (5g, 1000kg, 1 Unidade)
+  -p FLOAT, --preco FLOAT
+                        Preço pago no produto Ex.:(00.00)
+
+Criado por Daniel Latim
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Produto
+--------------------------------------------------------------------------------
+Nome: Feijao
+Medida: g
+Quantidade: 600
+Preço R$: 8.99
+Preco por grama: R$ 0.01
+--------------------------------------------------------------------------------

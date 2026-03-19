@@ -1,0 +1,26 @@
+[
+  {
+    "medida": "kg",
+    "nome": "Banana",
+    "preco": 15.99,
+    "quantidade": 2
+  },
+  {
+    "medida": "kg",
+    "nome": "Batata",
+    "preco": 27.99,
+    "quantidade": 2
+  },
+  {
+    "medida": "kg",
+    "nome": "Melancia",
+    "preco": 27.9,
+    "quantidade": 3
+  },
+  {
+    "medida": "kg",
+    "nome": "File de Frango",
+    "preco": 22.5,
+    "quantidade": 2
+  }
+]
