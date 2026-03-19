@@ -17,3 +17,8 @@ class UnidadeMedida(StrEnum):
 
     # Unidade
     UNIDADE = "unidade"
+
+
+if __name__ == "__main__":
+    medida =  UnidadeMedida('ml')
+    print(medida.value)

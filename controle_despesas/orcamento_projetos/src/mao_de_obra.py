@@ -1,4 +1,4 @@
-from .renda_mensal_base import RendaMensalBase
+from src.renda_mensal_base import RendaMensalBase
 
 class MaoDeObra:
     def __init__(self, mao_de_obra_porcentagem: int, mao_de_obra_horas_trabalhadas: int, mao_de_obra_minutos_trabalhados: int, mao_de_obra_taxa_de_urgencia: float = 0) -> None:
