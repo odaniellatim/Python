@@ -9,6 +9,7 @@ if __name__ == "__main__":
     comandos.cm(parser)
 
     args = parser.parse_args()
+    print(args.listar)
 
     # Listar items no terminal
     if (args.listar):
@@ -23,5 +24,3 @@ if __name__ == "__main__":
 
     if (args.clear):
         fn.save([], file_name)
-
-    # fn.preview(args.nome, args.medida, args.quantidade, args.preco)
