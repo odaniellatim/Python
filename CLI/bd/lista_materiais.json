@@ -1,0 +1,46 @@
+[
+    {
+	"material_id": 1,
+	"material_nome": "Tinta Branca",
+	"material_valor": 33.33,
+	"material_quantidade": 90,
+	"material_unidade_medida": "g",
+	"material_qntd_usado_projeto": 10,
+	"material_qntd_usado_medida": "g",
+	"material_qntd_usado_preco": 3.7,
+	"material_status": true
+    },
+    {
+	"material_id": 2,
+	"material_nome": "Tinta Amarelo",
+	"material_valor": 33.33,
+	"material_quantidade": 90,
+	"material_unidade_medida": "g",
+	"material_qntd_usado_projeto": 5,
+	"material_qntd_usado_medida": "g",
+	"material_qntd_usado_preco": 1.85,
+	"material_status": true
+    },
+    {
+	"material_id": 3,
+	"material_nome": "Tinta Azul",
+	"material_valor": 33.33,
+	"material_quantidade": 90,
+	"material_unidade_medida": "g",
+	"material_qntd_usado_projeto": 7,
+	"material_qntd_usado_medida": "g",
+	"material_qntd_usado_preco": 2.59,
+	"material_status": true
+    },
+    {
+	"material_id": 4,
+	"material_nome": "Tinta Roxo",
+	"material_valor": 33.33,
+	"material_quantidade": 90,
+	"material_unidade_medida": "g",
+	"material_qntd_usado_projeto": 15,
+	"material_qntd_usado_medida": "g",
+	"material_qntd_usado_preco": 5.55,
+	"material_status": true
+    }
+]

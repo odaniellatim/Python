@@ -1,0 +1,11 @@
+[
+    {
+	"renda_mensal_valor": 5000,
+	"renda_mensal_dias_trabalhados": 30,
+	"renda_mensal_horas_trabalhados": 16,
+	"renda_mensal_valor_total_hora": 10.42,
+	"renda_mensal_valor_total_minuto": 0.17,
+	"renda_mensal_total_projetos": 20,
+	"renda_mensal_custo_medio_projeto": 250
+    }
+]

@@ -3,17 +3,6 @@ import json
 from argparse import ArgumentParser
 import fmt
 
-def item(nome, medida, quantidade, preco):
-    # Função que gerar os dados organizados em um dicionario
-    if (nome is None or medida is None or medida is None):
-        exit()
-    return {
-        "nome": nome,
-        "medida": medida,
-        "quantidade": quantidade,
-        "preco": preco
-    }
-
 
 def f_obj(lista_items: list):
     total_items = len(lista_items)
@@ -23,8 +12,8 @@ def f_obj(lista_items: list):
 
     # Função que formata a impressão dos dados na tela.
     fmt.draw_table(4, lista_items)
-    #fmt.tabela_vertical((len(lista_items) +1), lista_items)
-    
+    # fmt.tabela_vertical((len(lista_items) +1), lista_items)
+
     for value in lista_items:
         valor_total += value['preco']
         valor_proporcao += value['preco']/value['quantidade']

@@ -1,0 +1,234 @@
+[
+  {
+    "orcamento_id": 5,
+    "orcamento_nome": "Orcamento5",
+    "orcamento_valor_mao_de_obra": 59.971999999999994,
+    "orcamento_valor_custo_fixo": 33.510000000000005,
+    "orcamento_valor_hora_base": [
+      {
+        "renda_mensal_valor_total_hora": 10.42,
+        "renda_mensal_valor_total_minuto": 0.17
+      }
+    ],
+    "orcamento_materiais": [
+      {
+        "material_id": 1,
+        "material_nome": "Tinta Branca",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 10,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 3.7,
+        "material_status": true
+      },
+      {
+        "material_id": 2,
+        "material_nome": "Tinta Amarelo",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 5,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 1.85,
+        "material_status": true
+      },
+      {
+        "material_id": 3,
+        "material_nome": "Tinta Azul",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 7,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 2.59,
+        "material_status": true
+      },
+      {
+        "material_id": 4,
+        "material_nome": "Tinta Roxo",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 15,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 5.55,
+        "material_status": true
+      }
+    ],
+    "orcamento_custo_fixo": [
+      {
+        "custo_fixo_id": 1,
+        "custo_fixo_nome": "Luz",
+        "custo_fixo_valor": 147.9,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 1,
+        "custo_fixo_durabilidade_dias": 30,
+        "custo_fixo_tota_projetos": 20,
+        "custo_fixo_valor_por_projeto": 7.39,
+        "custo_fixo_valor_pago_dia": 4.93
+      },
+      {
+        "custo_fixo_id": 2,
+        "custo_fixo_nome": "\u00c1gua",
+        "custo_fixo_valor": 119.9,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 1,
+        "custo_fixo_durabilidade_dias": 30,
+        "custo_fixo_tota_projetos": 20,
+        "custo_fixo_valor_por_projeto": 5.99,
+        "custo_fixo_valor_pago_dia": 4.93
+      },
+      {
+        "custo_fixo_id": 3,
+        "custo_fixo_nome": "Compressor",
+        "custo_fixo_valor": 1.19,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 48,
+        "custo_fixo_durabilidade_dias": 1460,
+        "custo_fixo_tota_projetos": 960,
+        "custo_fixo_valor_por_projeto": 1.24,
+        "custo_fixo_valor_pago_dia": 0.82
+      },
+      {
+        "custo_fixo_id": 4,
+        "custo_fixo_nome": "Computador",
+        "custo_fixo_valor": 4.99,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 48,
+        "custo_fixo_durabilidade_dias": 1460,
+        "custo_fixo_tota_projetos": 960,
+        "custo_fixo_valor_por_projeto": 5.2,
+        "custo_fixo_valor_pago_dia": 3.46
+      }
+    ],
+    "orcamento_mao_de_obra": [
+      {
+        "mao_de_obra_id": 1,
+        "mao_de_obra_nome": "Configura\u00e7\u00e3o Base",
+        "mao_de_obra_porcentagem": 10,
+        "mao_de_obra_horas_trabalhadaos": 2,
+        "mao_de_obra_minutos_trabalhados": 34,
+        "mao_de_obra_taxa_de_urgencia": 27.9,
+        "mao_de_obra_status": true
+      }
+    ],
+    "orcamento_final": 93.482
+  },
+  {
+    "orcamento_id": 5,
+    "orcamento_nome": "Orcamento5",
+    "orcamento_valor_mao_de_obra": 59.971999999999994,
+    "orcamento_valor_custo_fixo": 33.510000000000005,
+    "orcamento_valor_hora_base": [
+      {
+        "renda_mensal_valor_total_hora": 10.42,
+        "renda_mensal_valor_total_minuto": 0.17
+      }
+    ],
+    "orcamento_materiais": [
+      {
+        "material_id": 1,
+        "material_nome": "Tinta Branca",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 10,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 3.7,
+        "material_status": true
+      },
+      {
+        "material_id": 2,
+        "material_nome": "Tinta Amarelo",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 5,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 1.85,
+        "material_status": true
+      },
+      {
+        "material_id": 3,
+        "material_nome": "Tinta Azul",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 7,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 2.59,
+        "material_status": true
+      },
+      {
+        "material_id": 4,
+        "material_nome": "Tinta Roxo",
+        "material_valor": 33.33,
+        "material_quantidade": 90,
+        "material_unidade_medida": "g",
+        "material_qntd_usado_projeto": 15,
+        "material_qntd_usado_medida": "g",
+        "material_qntd_usado_preco": 5.55,
+        "material_status": true
+      }
+    ],
+    "orcamento_custo_fixo": [
+      {
+        "custo_fixo_id": 1,
+        "custo_fixo_nome": "Luz",
+        "custo_fixo_valor": 147.9,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 1,
+        "custo_fixo_durabilidade_dias": 30,
+        "custo_fixo_tota_projetos": 20,
+        "custo_fixo_valor_por_projeto": 7.39,
+        "custo_fixo_valor_pago_dia": 4.93
+      },
+      {
+        "custo_fixo_id": 2,
+        "custo_fixo_nome": "\u00c1gua",
+        "custo_fixo_valor": 119.9,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 1,
+        "custo_fixo_durabilidade_dias": 30,
+        "custo_fixo_tota_projetos": 20,
+        "custo_fixo_valor_por_projeto": 5.99,
+        "custo_fixo_valor_pago_dia": 4.93
+      },
+      {
+        "custo_fixo_id": 3,
+        "custo_fixo_nome": "Compressor",
+        "custo_fixo_valor": 1.19,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 48,
+        "custo_fixo_durabilidade_dias": 1460,
+        "custo_fixo_tota_projetos": 960,
+        "custo_fixo_valor_por_projeto": 1.24,
+        "custo_fixo_valor_pago_dia": 0.82
+      },
+      {
+        "custo_fixo_id": 4,
+        "custo_fixo_nome": "Computador",
+        "custo_fixo_valor": 4.99,
+        "custo_fixo_status": "pago",
+        "custo_fixo_durabilidade_meses": 48,
+        "custo_fixo_durabilidade_dias": 1460,
+        "custo_fixo_tota_projetos": 960,
+        "custo_fixo_valor_por_projeto": 5.2,
+        "custo_fixo_valor_pago_dia": 3.46
+      }
+    ],
+    "orcamento_mao_de_obra": [
+      {
+        "mao_de_obra_id": 1,
+        "mao_de_obra_nome": "Configura\u00e7\u00e3o Base",
+        "mao_de_obra_porcentagem": 10,
+        "mao_de_obra_horas_trabalhadaos": 2,
+        "mao_de_obra_minutos_trabalhados": 34,
+        "mao_de_obra_taxa_de_urgencia": 27.9,
+        "mao_de_obra_status": true
+      }
+    ],
+    "orcamento_final": 93.482
+  }
+]

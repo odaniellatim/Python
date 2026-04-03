@@ -1,0 +1,11 @@
+[
+    {
+	"mao_de_obra_id": 1,
+	"mao_de_obra_nome": "Configuração Base",
+	"mao_de_obra_porcentagem": 10,
+	"mao_de_obra_horas_trabalhadaos": 2,
+	"mao_de_obra_minutos_trabalhados": 34,
+	"mao_de_obra_taxa_de_urgencia": 27.90,
+	"mao_de_obra_status": true
+    }
+]

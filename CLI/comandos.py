@@ -1,5 +1,5 @@
 def cm(parser):
-    
+
     # Chave para passar valores por comando.
     parser.add_argument(
         "-n",
@@ -30,6 +30,14 @@ def cm(parser):
         type=float,
         required=False,
         help="Preço pago no produto Ex.:(00.00)",
+    )
+
+    parser.add_argument(
+        "-s",
+        "--status",
+        action="store_true",
+        required=False,
+        help="Opção usada para marcar o status do item para uso."
     )
 
     parser.add_argument(

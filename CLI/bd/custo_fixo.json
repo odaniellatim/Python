@@ -1,0 +1,46 @@
+[
+    {
+	"custo_fixo_id": 1,
+	"custo_fixo_nome": "Luz",
+	"custo_fixo_valor": 147.90,
+	"custo_fixo_status": "pago",
+	"custo_fixo_durabilidade_meses": 1,
+	"custo_fixo_durabilidade_dias": 30,
+	"custo_fixo_tota_projetos": 20,
+	"custo_fixo_valor_por_projeto": 7.39,
+	"custo_fixo_valor_pago_dia": 4.93
+    },
+    {
+	"custo_fixo_id": 2,
+	"custo_fixo_nome": "Água",
+	"custo_fixo_valor": 119.90,
+	"custo_fixo_status": "pago",
+	"custo_fixo_durabilidade_meses": 1,
+	"custo_fixo_durabilidade_dias": 30,
+	"custo_fixo_tota_projetos": 20,
+	"custo_fixo_valor_por_projeto": 5.99,
+	"custo_fixo_valor_pago_dia": 4.93
+    },
+    {
+	"custo_fixo_id": 3,
+	"custo_fixo_nome": "Compressor",
+	"custo_fixo_valor": 1.190,
+	"custo_fixo_status": "pago",
+	"custo_fixo_durabilidade_meses": 48,
+	"custo_fixo_durabilidade_dias": 1460,
+	"custo_fixo_tota_projetos": 960,
+	"custo_fixo_valor_por_projeto": 1.24,
+	"custo_fixo_valor_pago_dia": 0.82
+    },
+    {
+	"custo_fixo_id": 4,
+	"custo_fixo_nome": "Computador",
+	"custo_fixo_valor": 4.990,
+	"custo_fixo_status": "pago",
+	"custo_fixo_durabilidade_meses": 48,
+	"custo_fixo_durabilidade_dias": 1460,
+	"custo_fixo_tota_projetos": 960,
+	"custo_fixo_valor_por_projeto": 5.20,
+	"custo_fixo_valor_pago_dia": 3.46
+    }
+]
