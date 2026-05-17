@@ -36,7 +36,6 @@ if __name__ == "__main__":
 
     # Carrega os dados do arquivo json, usando a classe Custo Fixo.
     custo_fixo = load_data(data_json)
-
     print("-" * 60)
 
     # Filtra o lista de items pelo status de PAGO/PENDENTE
