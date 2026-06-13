@@ -1,8 +1,8 @@
 import os
-import random
-from materiais import Materiais
+from Save_in_file import Save_in_file
+
+# import random
 from orcamento_projeto import OrcamentoProjeto
-from projetos import Projetos
 
 
 def divider(headline):
@@ -15,59 +15,46 @@ def divider(headline):
 if __name__ == "__main__":
     os.system("clear")
 
-    item1 = Materiais(1, "Tinta Branca", 33.33, 90, "g")
+    folder_name = "materiais"
+    file_name = "materiais.json"
+    data = Save_in_file(folder_name, file_name)
 
-    divider("MATERIAIS: Listar Itens cadastrados")
-    item1.mt_listar_materiais()
+    orcamento = OrcamentoProjeto(1, "Pintura")
+    item1 = orcamento.oc_adicionar_materiais(10, "Branco", 150.99, 90, "g")
+    item2 = orcamento.oc_adicionar_materiais(150, "Turquesa", 145.99, 150, "g")
+    # divider(f"Orcamento: {orcamento.oc_nome_orcamento()}")
 
-    divider("Valor Total material usado projeto")
+    orcamento.oc_alterar_status(10)
+    orcamento.oc_alterar_status(2)
+    # lista_materiais = orcamento.oc_listar_materiais_projeto()
 
-    total_projeto = item1.mt_valor_quantidade_projeto(10)
-    print("Valor total qntd_material projeto: R$ ", round(total_projeto, 2))
+    # data.save_data(orcamento.oc_dicionario_save())
+    removido = orcamento.oc_deletar_material(2)
+    print(removido)
 
-    divider("MATERIAIS: Valor da grama do material")
+    items = orcamento.oc_listar_materiais()
+    for oc in items:
+        for key, value in oc.items():
 
-    valor_grama = item1.mt_valor_unidade_medida()
-    print("Valor total grama: R$ ", round(valor_grama, 2))
+            if key == "orcamento_materiais":
+                for produto in value:
+                    # print(produto)
+                    print("-" * 70)
+            else:
+                print(key, value)
+        print("-" * 70)
 
-    divider("MATERIAIS: Alterar o status do material")
-    selecionar_material = item1.mt_selecionar_produto(1)
-    print(selecionar_material)
+    # estoque = orcamento.oc_valor_total_estoque()
+    # print(f"Estoque: {estoque}")
+    # data = data.load_data(folder_name, file_name)
+    # # print(data)
+    # for orcamento in data:
+    #     for key, value in orcamento.items():
 
-    divider("Listar Itens cadastrados")
-    item1.mt_listar_materiais()
-
-    divider("Classe Orcamento Projeto")
-    orcamento = OrcamentoProjeto(1, "Pintura Tênis X")
-
-    # opt = 0
-    # while opt != 1:
-    #     if opt == "1":
-    #         opt = 1
-    #     else:
-    #         divider("Adicionar Materiais")
-    #         id_produto = random.randint(0, 10000)
-    #         nome_produto = input("Informe o nome do produto: ")
-    #         preco_produto = input("Informe o preco do produto: ")
-    #         quantidade_produto = input("Informe a quantidade da embalagem: ")
-    #         unidade_medida_produto = input("Informe a unidade de medida (kg, g, mm): ")
-
-    #         orcamento.oc_adicionar_materiais(
-    #             id_produto,
-    #             nome_produto,
-    #             float(preco_produto),
-    #             int(quantidade_produto),
-    #             unidade_medida_produto,
-    #         )
-
-    divider("Listar materais cadastrados")
-    orcamento.oc_listar_materiais_cadastrados()
-
-    #         print("\n")
-
-    #         opt = input("Digite 1 para encerrar")
-    # divider("Orcamento: Listar materais cadastrados")
-    # orcamento.oc_listar_materiais_cadastrados()
-
-    projeto1 = Projetos()
-    projeto1.pj_adicionar_projeto("Tenis X")
+    #         if key == "orcamento_materiais":
+    #             for produto in value:
+    #                 print(produto)
+    #                 print("-" * 70)
+    #         else:
+    #             print(key, value)
+    #     print("-" * 70)

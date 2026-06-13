@@ -1,28 +1,28 @@
-class Materiais:
+from model_base_cadastro import CadastroItens
+
+
+class Materiais(CadastroItens):
+
     def __init__(
         self,
-        material_id,
-        material_nome,
-        material_valor,
+        cadastro_id,
+        cadastro_nome,
+        cadastro_valor,
         material_quantidade,
         material_unidade_medida,
     ):
-        self.material_id = material_id
-        self.material_nome = material_nome
-        self.material_valor = material_valor
+
+        super().__init__(cadastro_id, cadastro_nome, cadastro_valor)
         self.material_quantidade = material_quantidade
         self.material_unidade_medida = material_unidade_medida
         self.material_status = "unselect"
         self.material_qntd_usado_projeto = 0
         self.material_qntd_usado_preco = 0
 
-    def mt_get_material_valor(self):
-        return self.material_valor
-
     def mt_selecionar_produto(self, material_id):
         if material_id != "":
             self.material_status = "select"
-            return f"Material {self.material_nome} selecionado."
+            return f"Material {self.cadastro_nome} selecionado."
 
     def mt_valor_quantidade_projeto(self, qntd_projeto):
         if qntd_projeto != "":
@@ -30,16 +30,16 @@ class Materiais:
 
     def mt_valor_unidade_medida(self):
         if self.material_unidade_medida == "g":
-            valor_grama = self.material_valor / self.material_quantidade
+            valor_grama = self.get_item_valor / self.material_quantidade
             return valor_grama
 
     def mt_listar_materiais(self):
-        print(f"ID. {self.material_id}")
-        print(f"Nome: {self.material_nome}")
-        print(f"Valor: {self.material_valor}")
-        print(
-            f"Quantidade: {self.material_quantidade} - {self.material_unidade_medida}"
-        )
-        print("Valor por grama: R$", round(self.mt_valor_unidade_medida(), 2))
-        print(f"Status: {self.material_status}")
-        print("-" * 70)
+        return {
+            "id": self.cadastro_id,
+            "nome": self.cadastro_nome,
+            "valor": round(self.get_item_valor, 3),
+            "quantidade": self.material_quantidade,
+            "unidade_medida": self.material_unidade_medida,
+            "valor_unidade_medida": round(self.mt_valor_unidade_medida(), 2),
+            "status": self.material_status,
+        }

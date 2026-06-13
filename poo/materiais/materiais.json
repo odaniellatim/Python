@@ -1,0 +1,26 @@
+[
+  {
+    "orcamento_id": 1,
+    "orcamento_nome": "Pintura",
+    "orcamento_materiais": [
+      {
+        "id": 2,
+        "nome": "Amarelo",
+        "valor": 33,
+        "quantidade": 90,
+        "unidade_medida": "g",
+        "valor_unidade_medida": 0.37,
+        "status": "select"
+      },
+      {
+        "id": 3,
+        "nome": "Preto",
+        "valor": 33,
+        "quantidade": 90,
+        "unidade_medida": "g",
+        "valor_unidade_medida": 0.37,
+        "status": "select"
+      }
+    ]
+  }
+]
