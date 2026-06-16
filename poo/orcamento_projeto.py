@@ -7,6 +7,9 @@ class OrcamentoProjeto:
         self.orcamento_nome: str = orcamento_nome
         self.lista_materiais: Materiais = []
 
+    def oc_id(self):
+        return self.orcamento_id
+    
     def oc_adicionar_materiais(
         self,
         material_id: int,
@@ -47,8 +50,8 @@ class OrcamentoProjeto:
             lista_materiais_projeto.append(material.mt_listar_materiais())
         return lista_materiais_projeto
 
-    def oc_nome_orcamento(self) -> str:
-        return f"{self.orcamento_id}. {self.orcamento_nome}"
+    def oc_nome_orcamento(self) -> dict:
+        return {'orcamento_id': self.orcamento_id, 'orcamento_nome' : self.orcamento_nome}
 
     def oc_dicionario_save(self) -> list:
         data = [
