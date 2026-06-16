@@ -21,7 +21,7 @@ def argumentos(parser):
         dest="comando", required=True, help="Comandos disponiveis"
     )
 
-    subparsers.add_parser("list", aliases=["l"], help="Listar todos os materiais")
+    subparsers.add_parser("list", aliases=["lp"], help="Listar todos os materiais")
 
     # Subcomando 'add' (Requer os dados do produto como argumentos posicionais)
     parser_add = subparsers.add_parser("add", help="Adicionar um novo material")
@@ -33,6 +33,9 @@ def argumentos(parser):
     parser_add.add_argument(
         "medida", type=str, help="Unidade de medida (g, ml, litros, etc.)"
     )
+    
+    # Subcomando para carregar dados do arquivo (banco de dados)
+    parser_load = subparsers.add_parser("load", help="Carregar dados do arquivo json")
 
 
 def opcao_selecionada(opt, projeto: Projetos):
@@ -46,41 +49,20 @@ def opcao_selecionada(opt, projeto: Projetos):
     
     
     match opt.comando:
-        case "list" | "l":
+        case "list" | "lp":
             fileload = projeto.load_file_materiais(db, foldername, filename)
             pj = projeto.pj_listar_orcamentos()
-            pj
-            data = db.load_data(foldername, filename)
-            table.add_column("ID", justify="center")
-            table.add_column("NOME", justify="center")
-            table.add_column("PREÇO", justify="center")
-            table.add_column("QUANTIDADE", justify="center")
-            table.add_column("UNIDADE MEDIDA", justify="center")
-            # table.add_column("Descrição")
-            for item in data:
-                print(
-                    Panel(
-                        f"{item['orcamento_id']}. {item['orcamento_nome']}",
-                    )
-                )
-                for key, value in item.items():
-                    if key == "orcamento_materiais":
-                        for material in value:
-                            produto = list(material.items())
-                            table.add_row(
-                                str(produto[0][1]),
-                                str(produto[1][1]),
-                                str(produto[2][1]),
-                                str(produto[3][1]),
-                                str(produto[4][1]),
-                            )
-            console.print(table)
+            print(pj)
+            projeto.pj_listar_materiais_projetos()
+            
         case "add":
             id_m = len(orcamento.oc_listar_materiais())
             orcamento.oc_adicionar_materiais(
                 id_m, opt.nome, opt.preco, opt.qntd, opt.medida
             )
             return orcamento.oc_listar_materiais()
+        case "load":
+            projeto.load_file_materiais()
         case _:
             print("Use --help para ajuda")
 

@@ -1,5 +1,5 @@
 from materiais import Materiais
-
+from rich import print
 
 class OrcamentoProjeto:
     def __init__(self, orcamento_id: int, orcamento_nome: str):
@@ -15,16 +15,18 @@ class OrcamentoProjeto:
         material_quantidade: int,
         material_unidade_medida: str,
     ) -> Materiais:
-
-        item = Materiais(
-            material_id,
-            material_nome,
-            material_preco,
-            material_quantidade,
-            material_unidade_medida,
-        )
-        self.lista_materiais.append(item)
-        return item
+        try:    
+            item = Materiais(
+                material_id,
+                material_nome,
+                material_preco,
+                material_quantidade,
+                material_unidade_medida,
+            )        
+            self.lista_materiais.append(item)
+        except ValueError as err:
+            print("Erro: Campo preenchido incorretamente", err)
+        return item.mt_listar_materiais()
 
     def oc_valor_total_estoque(self) -> float:
         valor_total = 0
@@ -32,14 +34,14 @@ class OrcamentoProjeto:
             valor_total += preco.get_item_valor
         return valor_total
 
-    def oc_listar_materiais_projeto(self) -> list:
+    def oc_listar_materiais_select(self) -> list:
         lista_materiais_projeto = []
         for material in self.lista_materiais:
             if material.mt_listar_materiais()["status"] == "select":
                 lista_materiais_projeto.append(material.mt_listar_materiais())
         return lista_materiais_projeto
 
-    def oc_listar_materiais(self) -> list:
+    def oc_listar_todos_materiais(self) -> list:
         lista_materiais_projeto = []
         for material in self.lista_materiais:
             lista_materiais_projeto.append(material.mt_listar_materiais())
@@ -53,7 +55,7 @@ class OrcamentoProjeto:
             {
                 "orcamento_id": self.orcamento_id,
                 "orcamento_nome": self.orcamento_nome,
-                "orcamento_materiais": self.oc_listar_materiais_projeto(),
+                "orcamento_materiais": self.oc_listar_materiais_select(),
             }
         ]
         return data
@@ -72,28 +74,38 @@ class OrcamentoProjeto:
         except ValueError:
             return print("Erro: Campo vazio")
 
-    def add_produto_teste(self):
-        """Cadastro de materiais para realizar os testes"""
-        item1 = Materiais(1, "Azul", 33, 90, "g")
-        item2 = Materiais(2, "Amarelo", 33, 90, "g")
-        item3 = Materiais(3, "Preto", 33, 90, "g")
-        item4 = Materiais(4, "Rosa", 33, 90, "g")
-        self.lista_materiais.append(item1)
-        self.lista_materiais.append(item2)
-        self.lista_materiais.append(item3)
-        self.lista_materiais.append(item4)
-
-
-# if __name__ == "__main__":
-
-#     pasta = "materiais"
-#     arquivo = "materiais.json"
-
-#     bd = Save_in_file(pasta, arquivo)  # Class gerencia banco de dados
-#     load_file = load_file_materiais(bd, pasta, arquivo)
-
-#     oc = OrcamentoProjeto(1, "teste")
-
-#     produto = oc.oc_listar_materiais()
-#     print(load_file)
-#     print(produto)
+if __name__ == "__main__":
+    oc = OrcamentoProjeto(1, "Orcamento Teste")
+    
+    # Armazena uma lista de materiais
+    materiais = []
+    
+    # Adicionando material a lista de materiais
+    materiais.append(oc.oc_adicionar_materiais(12, "preto", 15.90, 90, 'g'))
+    materiais.append(oc.oc_adicionar_materiais(10, "Branco", 16.90, 90, 'g'))
+    materiais.append(oc.oc_adicionar_materiais(9, "Rosa", 13.58, 90, 'g'))
+    
+    # Listando o valor do estoque total dos materiais
+    total_estoque = oc.oc_valor_total_estoque()
+    
+    # Alterar o status de um material para selecionar
+    oc.oc_alterar_status(10)
+    oc.oc_alterar_status(9)
+    
+    # Listar materiais selecionados
+    oc.oc_listar_materiais_select()
+    
+    # Listar todos os materiais
+    oc.oc_listar_todos_materiais()
+    
+    # Listar dicionario completo para salvar em um arquivo
+    data = oc.oc_dicionario_save()
+    
+    # Deletar o material
+    delete = oc.oc_deletar_material(9)
+    print(oc.oc_dicionario_save())
+    
+        
+    print(data)
+    print(f"Total Estoque: {round(total_estoque, 3)}")
+    print(f"\n {oc.orcamento_nome} \n")

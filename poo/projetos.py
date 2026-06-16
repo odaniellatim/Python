@@ -1,4 +1,4 @@
-import random
+import random   
 from orcamento_projeto import OrcamentoProjeto
 
 
@@ -13,8 +13,16 @@ class Projetos:
         print(f"Orcamento {projeto_nome} Adicionado com sucesso!")
 
     def pj_listar_orcamentos(self):
-        for orcamento in self.orcamentos:
-            print(orcamento.oc_nome_orcamento())
+        lista_projetos = []
+        print(self.orcamentos)
+        # for orcamento in self.orcamentos:
+            # lista_projetos.append(orcamento.oc_nome_orcamento())
+        # return lista_projetos
+        
+    def pj_listar_materiais_projetos(self):
+        # oc_listar_materiais
+        for materiais in self.orcamentos:
+            print(materiais.oc_listar_materiais())
 
     def load_file_materiais(self, bd: Save_in_file, folder, filename):
         data = bd.load_data(folder, filename)
