@@ -5,6 +5,7 @@ from rich import print
 class Projetos:
     def __init__(self):
         self.orcamentos = []
+        self.orcamento_materiais = []
         #self.projeto_id_ramdom = random.randint(0, 10000)
 
     def pj_adicionar_projeto(self,projeto_id: int, projeto_nome: str) -> str:
@@ -38,11 +39,23 @@ class Projetos:
                     unidade_medida_material
                 )
                 return item_add
-        
+                
+                
+    # TODO: Continuar a seleção do item por id
+    def pj_selecionar_materiais_projeto(self, material_id):
+        for material in self.orcamentos:
+            lista_mt = material.oc_listar_todos_materiais()
+            
+            if lista_mt[0]['id'] == material_id:
+                select = material.oc_alterar_status(material_id)
+                self.orcamento_materiais.append(select)
+                return select
+            
+    
     def pj_listar_materiais_projetos(self, projeto_id: int ) -> list:
         for materiais in self.orcamentos:
             if materiais.oc_id() == projeto_id:
-                return materiais.oc_listar_todos_materiais()
+                return materiais.oc_listar_materiais_select()
         
 
     def load_file_materiais(self, bd: Save_in_file, folder, filename):
@@ -63,15 +76,16 @@ class Projetos:
             return self.orcamentos
             
     def pj_dicionario(self):
-        resultados = []
-        for orcamento in self.orcamentos:        
-            dados_orcamento = vars(orcamento).copy()                
-            for mat in orcamento.oc_listar_todos_materiais():
-                dados_orcamento['lista_materiais'] = mat
-            resultados.append(dados_orcamento)
-        
-        return resultados
-        
+        for orcamento in self.orcamentos:
+            projeto = orcamento.oc_nome_orcamento()        
+            
+            if projeto['orcamento_id']:
+                return {
+                    'projeto_id': projeto['orcamento_id'],
+                    'projeto_nome': projeto['orcamento_nome'],
+                    'projeto_materiais': self.orcamento_materiais,
+                }
+
 
 if __name__ == "__main__":
     projeto = Projetos()
@@ -83,6 +97,13 @@ if __name__ == "__main__":
     add3 = projeto.pj_adicionar_materiais_projeto(1, 4, "Azul", 15.90, 90, 'g')
     add4 = projeto.pj_adicionar_materiais_projeto(1, 5, "Rosa", 15.90, 90, 'g')
     
-    lista_materiais = projeto.pj_listar_materiais_projetos(1)
+    select = projeto.pj_selecionar_materiais_projeto(2)
+    select = projeto.pj_selecionar_materiais_projeto(3)
+    print("select", select)
     
-    print(projeto.pj_dicionario())
+    lista_materiais = projeto.pj_listar_materiais_projetos(1)
+    lista_materiais2 = projeto.pj_listar_materiais_projetos(5)
+    
+    dicionario = projeto.pj_dicionario()
+    
+    print(dicionario)

@@ -64,9 +64,11 @@ class OrcamentoProjeto:
         return data
 
     def oc_alterar_status(self, id_material: int) -> None:
+        itens_selecionados = []
         for material in self.lista_materiais:
             if material.cadastro_id == id_material:
-                material.mt_selecionar_produto(id_material)
+                itens_selecionados.append(material.mt_listar_materiais())
+        return itens_selecionados
 
     def oc_deletar_material(self, material_id) -> list:
         try:
