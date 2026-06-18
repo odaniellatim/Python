@@ -14,13 +14,13 @@ print(" ")
 print(" Defina o tempo de espeara entre cada Rodada: ")
 tempo_rodada = int(input())
 
-os.system('clear')
+os.system('cls')
 
 quantidade_numeros_bing = int(input("Digite a quantidade maxima de numeros a ser sorteados. \n -> "))
-for numero in range(0, quantidade_numeros_bing):
+for numero in range(1, quantidade_numeros_bing):
   numeros_bingo.append(numero)
 
-os.system('clear')
+os.system('cls')
 
 
 def gerador_aleatorio():
@@ -31,7 +31,7 @@ def gerador_aleatorio():
 
 def gera_numero(n):
 
-    os.system('clear')
+    os.system('cls')
     
     print("-" * 50)
     print(" ")
@@ -61,7 +61,7 @@ while True:
 
     #Verifica se os numeros disponiveis para sorteio foram finalizados
     if len(numeros_bingo) == 0:
-        os.system('clear')
+        os.system('cls')
 
         print(" ------------ VENCEDOR ------------")
         print(" ")
@@ -86,7 +86,7 @@ while True:
         recomecar = input("-> ")
 
         if recomecar == "s" or recomecar == "S":
-            os.system('clear')
+            os.system('cls')
             numeros_sorteados.clear();
             numeros_bingo = numeros_bingo
         else:
@@ -107,3 +107,6 @@ while True:
     #Numeros que já foram sorteados           
     print(" ")
     
+    # gerar numeros maior que 4 (1-4) evitar numeros sequenciais11
+    
+    #

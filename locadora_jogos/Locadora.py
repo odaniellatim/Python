@@ -36,9 +36,16 @@ class Locadora:
             console_string = ", ".join(consoles_nome)
             
             if fabricante_id == None:
-                print(f"id: {id.ljust(15,'.')} Empresa: {fabricante_nome.ljust(40, '.').title()} Pais: {pais_nome.ljust(20, '.').title()} Consoles: {console_string.title()}")
+                print(f"id: {id.ljust(15,'.')} \
+                      Empresa: {fabricante_nome.ljust(40, '.').title()} \
+                      Pais: {pais_nome.ljust(20, '.').title()} \
+                      Consoles: {console_string.title()}")
             else:
                 if fabricante_id in self.fabricante[id]['consoles']:
                     print(f"id: {id.ljust(15,'.')} Empresa: {fabricante_nome.ljust(40, '.').title()} Pais: {pais_nome.ljust(20, '.').title()} Consoles: {console_string.title()}")
             
         print("")
+        
+if __name__ == "__main__":
+    locadora1 = Locadora("Sony", 'Playstation', ["Mario", "GTA5"])
+    print(locadora1.listar_fabricantes(1))
