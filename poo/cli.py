@@ -7,9 +7,10 @@ from orcamento_projeto import OrcamentoProjeto
 from Save_in_file import Save_in_file
 from projetos import Projetos
 
+
 def start():
     projeto = Projetos()
-    
+
     parser = argparse.ArgumentParser(description="Gerenciador de Orçamentos Projetos")
     argumentos(parser)
     args = parser.parse_args()
@@ -33,7 +34,7 @@ def argumentos(parser):
     parser_add.add_argument(
         "medida", type=str, help="Unidade de medida (g, ml, litros, etc.)"
     )
-    
+
     # Subcomando para carregar dados do arquivo (banco de dados)
     parser_load = subparsers.add_parser("load", help="Carregar dados do arquivo json")
 
@@ -42,19 +43,18 @@ def opcao_selecionada(opt, projeto: Projetos):
 
     foldername = "materiais"
     filename = "materiais.json"
-    
+
     console = Console()
     table = Table(show_lines=True)
     db = Save_in_file(foldername, filename)
-    
-    
+
     match opt.comando:
         case "list" | "lp":
             fileload = projeto.load_file_materiais(db, foldername, filename)
             pj = projeto.pj_listar_orcamentos()
             print(pj)
             projeto.pj_listar_materiais_projetos()
-            
+
         case "add":
             id_m = len(orcamento.oc_listar_materiais())
             orcamento.oc_adicionar_materiais(
@@ -65,6 +65,7 @@ def opcao_selecionada(opt, projeto: Projetos):
             projeto.load_file_materiais()
         case _:
             print("Use --help para ajuda")
+
 
 if __name__ == "__main__":
     teste = start()
