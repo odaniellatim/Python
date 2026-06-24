@@ -1,8 +1,12 @@
 import os
-from Save_in_file import Save_in_file
+import random
+import copy
 
-# import random
+from rich import print
+from save_data import SaveDataFile
 from orcamento_projeto import OrcamentoProjeto
+from materiais import Materiais
+from projetos import Projetos
 
 
 def divider(headline):
@@ -11,50 +15,64 @@ def divider(headline):
     print(headline.upper())
     print("-" * 70)
 
+def handler_add_material() -> list[Materiais]:
+    cores = ['Roxo', 'Branco', 'Azul', 'Rosa', 'Preto', 'Cinza', 'Amarelo', 'Verde', 'Vermelho']
+    materiais_adicionados = []
+    for number in range(10):
+        numero_radom = random.randint(0, len(cores)-1)
+        mt = Materiais(number, cores[numero_radom], 90, 33.33, 'g')
+        materiais_adicionados.append(mt)
+    return materiais_adicionados
+
+def handler_selecionar_material(id_material: list, qntd_material_usado: int, lt_materiais: list[Materiais]) -> list[Materiais]:
+    material_selecionado = []
+    for mat in lt_materiais:
+        for select in id_material:
+            if mat.material_id == select:
+                # A copia é importante para gerar um novo endereço de memoria do objeto
+                # Permitindo atualizar as informações do objeto sem alterar os demais itens
+                # que nao foram selecionados
+                copia_obj = copy.deepcopy(mat)
+                if qntd_material_usado > 0:
+                   copia_obj.mt_update_qntd_produto_usado_projeto(qntd_material_usado)
+                material_selecionado.append(copia_obj)
+    return material_selecionado
+        
 
 if __name__ == "__main__":
     os.system("clear")
 
+    # Variaveis globais
+    numero_radom = random.randint(0, 10000)
+
+    # Banco de dados em arquivos json
     folder_name = "materiais"
     file_name = "materiais.json"
-    data = Save_in_file(folder_name, file_name)
+    data = SaveDataFile(folder_name, file_name)
 
-    orcamento = OrcamentoProjeto(1, "Pintura")
-    item1 = orcamento.oc_adicionar_materiais(10, "Branco", 150.99, 90, "g")
-    item2 = orcamento.oc_adicionar_materiais(150, "Turquesa", 145.99, 150, "g")
-    # divider(f"Orcamento: {orcamento.oc_nome_orcamento()}")
+    # instancia lista de Materiais
+    lista_materais = handler_add_material()
 
-    orcamento.oc_alterar_status(10)
-    orcamento.oc_alterar_status(2)
-    # lista_materiais = orcamento.oc_listar_materiais_projeto()
+    # instancia Orcamento
+    oc1 = OrcamentoProjeto(1, 'Orcamento 1')
+    oc2 = OrcamentoProjeto(2, 'Orcamento 2')
 
-    # data.save_data(orcamento.oc_dicionario_save())
-    removido = orcamento.oc_deletar_material(2)
-    print(removido)
+    lista_orcamento = [oc1, oc2]
 
-    items = orcamento.oc_listar_materiais()
-    for oc in items:
-        for key, value in oc.items():
+    # instancia Projeto
+    pj1 = Projetos(lista_orcamento, lista_materais)
 
-            if key == "orcamento_materiais":
-                for produto in value:
-                    # print(produto)
-                    print("-" * 70)
-            else:
-                print(key, value)
-        print("-" * 70)
+    # Métodos referente a classe Orcamento
+    itens_add_orcamento = [2,4,6,8]
+    copy_lista_orcamento = copy.deepcopy(lista_materais)
+    lista_material_selecionado = handler_selecionar_material(itens_add_orcamento, 10, copy_lista_orcamento)
 
-    # estoque = orcamento.oc_valor_total_estoque()
-    # print(f"Estoque: {estoque}")
-    # data = data.load_data(folder_name, file_name)
-    # # print(data)
-    # for orcamento in data:
-    #     for key, value in orcamento.items():
+    pj1.pj_adicionar_material_orcamento(1, lista_material_selecionado)
+    
+    lista_orca = pj1.pj_listar_orcamentos()
+    print(lista_orca)
 
-    #         if key == "orcamento_materiais":
-    #             for produto in value:
-    #                 print(produto)
-    #                 print("-" * 70)
-    #         else:
-    #             print(key, value)
-    #     print("-" * 70)
+    # Métodos referete a classe Materiais
+    lista_itens = pj1.pj_listar_materiais_cadatrados()
+    print(lista_itens)
+    

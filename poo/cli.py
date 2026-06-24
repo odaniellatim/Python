@@ -4,12 +4,16 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from orcamento_projeto import OrcamentoProjeto
-from Save_in_file import Save_in_file
+from save_data import SaveDataFile
 from projetos import Projetos
 
 
 def start():
-    projeto = Projetos()
+    # Variaveis globais que armazenara os dados relevantes do programa
+    lista_orcamentos = []
+    lista_materiais = []
+    
+    projeto = Projetos(lista_orcamentos, lista_materiais)
 
     parser = argparse.ArgumentParser(description="Gerenciador de Orçamentos Projetos")
     argumentos(parser)
@@ -32,7 +36,7 @@ def argumentos(parser):
     parser_add.add_argument("preco", type=float, help="Preço do produto")
     parser_add.add_argument("qntd", type=int, help="Quantidade do produto")
     parser_add.add_argument(
-        "medida", type=str, help="Unidade de medida (g, ml, litros, etc.)"
+        "medida", type=str, help="Padrão de medida (g, ml, litros, etc.)"
     )
 
     # Subcomando para carregar dados do arquivo (banco de dados)
@@ -46,27 +50,21 @@ def opcao_selecionada(opt, projeto: Projetos):
 
     console = Console()
     table = Table(show_lines=True)
-    db = Save_in_file(foldername, filename)
+    db = SaveDataFile(foldername, filename)
 
     match opt.comando:
         case "list" | "lp":
-            fileload = projeto.load_file_materiais(db, foldername, filename)
-            pj = projeto.pj_listar_orcamentos()
-            print(pj)
-            projeto.pj_listar_materiais_projetos()
+            pass
 
         case "add":
-            id_m = len(orcamento.oc_listar_materiais())
-            orcamento.oc_adicionar_materiais(
-                id_m, opt.nome, opt.preco, opt.qntd, opt.medida
-            )
-            return orcamento.oc_listar_materiais()
+            pass
+        
         case "load":
-            projeto.load_file_materiais()
+            pass
+
         case _:
             print("Use --help para ajuda")
 
 
 if __name__ == "__main__":
     teste = start()
-    teste

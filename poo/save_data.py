@@ -2,7 +2,7 @@ from pathlib import Path
 import json
 
 
-class Save_in_file:
+class SaveDataFile:
     def __init__(self, folder_name, file_name):
         self._home_dir = Path()
         self.folder_name = folder_name
