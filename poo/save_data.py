@@ -55,7 +55,7 @@ if __name__ == "__main__":
     pasta = "data"
     arquivo = "data_.json"
 
-    data = Save_in_file(pasta, arquivo)
+    data = SaveDataFile(pasta, arquivo)
     # url_home = data.home_dir
     url_home = data.save_data_url()
     print(url_home)
@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     new_data = [{"item1": "resultado item 1"}]
 
-    material = Save_in_file(pasta2, arquivo2)
+    material = SaveDataFile(pasta2, arquivo2)
     item1 = material.save_data_url()
     print(item1)
     item1 = material.save_data(new_data)
