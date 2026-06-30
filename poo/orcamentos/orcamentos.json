@@ -1,0 +1,35 @@
+[
+  {
+    "orcamento_id": 0,
+    "orcamento_nome": "Pintura Paralama",
+    "orcamento_custo_materiais": 0,
+    "orcamento_materiais": []
+  },
+  {
+    "orcamento_id": 1,
+    "orcamento_nome": "Tênis Colorgin",
+    "orcamento_custo_materiais": 0,
+    "orcamento_materiais": [
+      {
+        "mt_id": 0,
+        "mt_nome": "Preto",
+        "mt_valor": 35.0,
+        "mt_quantidade": 90,
+        "mt_padrao_medida": "g",
+        "mt_valor_padrao_medida": 0.3889,
+        "mt_qntd_produto_usado_projeto": 0,
+        "mt_valor_produto_usado_projeto": 0
+      },
+      {
+        "mt_id": 3,
+        "mt_nome": "Preto",
+        "mt_valor": 1,
+        "mt_quantidade": 135.0,
+        "mt_padrao_medida": "l",
+        "mt_valor_padrao_medida": 0.0,
+        "mt_qntd_produto_usado_projeto": 0,
+        "mt_valor_produto_usado_projeto": 0
+      }
+    ]
+  }
+]

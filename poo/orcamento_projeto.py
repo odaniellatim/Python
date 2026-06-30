@@ -10,7 +10,7 @@ class OrcamentoProjeto:
     def oc_listar_detalhes_orcamento(self) -> dict:
         materiais_add = []
         for material in self.lista_materiais:
-                materiais_add.append(material.mt_listar_detalhes_materiais())
+                materiais_add.append(material.mt_listar_detalhes_material_selecionado())
         return {
             "orcamento_id": self.orcamento_id,
             "orcamento_nome": self.orcamento_nome,

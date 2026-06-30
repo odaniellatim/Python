@@ -32,6 +32,7 @@ class Projetos:
         MÉTODOS REFERENTE A CLASSE MATERIAIS
         Esses métodos depende da classe materiais para ter o funcionamento correto
     """
+
     def pj_listar_materiais_cadatrados(self):
         lista_material = []
         
@@ -41,3 +42,10 @@ class Projetos:
         if len(lista_material) <= 0:
             return False
         return lista_material
+    
+    def pj_deletar_material(self, id_material: int):
+        for m in self.projeto_lista_materiais:
+            if m.material_id == id_material:
+                self.projeto_lista_materiais.remove(m)
+        return self.pj_listar_materiais_cadatrados()
+        

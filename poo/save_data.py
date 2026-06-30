@@ -37,7 +37,7 @@ class SaveDataFile:
 
         with open(self.save_data_url(), "w", encoding="utf-8") as file:
             json.dump(data, file, indent=2, ensure_ascii=False)
-            print("Dados salvo com sucesso")
+            return "Dados salvo com sucesso"
 
     def load_data(self, folder_name, file_name):
         """Carrega dos dados do arquivo salvo no sistema"""

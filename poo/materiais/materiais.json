@@ -1,52 +1,34 @@
 [
   {
-    "mt_id": 1,
+    "mt_id": 0,
     "mt_nome": "Preto",
-    "mt_valor": 15.99,
-    "mt_quantidade": 90,
+    "mt_valor": 90,
+    "mt_quantidade": 35.0,
     "mt_padrao_medida": "g",
-    "mt_valor_padrao_medida": 0.1777,
-    "mt_qntd_produto_usado_projeto": 0,
-    "mt_valor_produto_usado_projeto": 0
+    "mt_valor_padrao_medida": 2.5714
   },
   {
     "mt_id": 1,
+    "mt_nome": "Branco",
+    "mt_valor": 35.0,
+    "mt_quantidade": 90,
+    "mt_padrao_medida": "g",
+    "mt_valor_padrao_medida": 0.3889
+  },
+  {
+    "mt_id": 2,
     "mt_nome": "Rosa",
-    "mt_valor": 15.99,
-    "mt_quantidade": 90,
+    "mt_valor": 90,
+    "mt_quantidade": 35.0,
     "mt_padrao_medida": "g",
-    "mt_valor_padrao_medida": 0.1777,
-    "mt_qntd_produto_usado_projeto": 0,
-    "mt_valor_produto_usado_projeto": 0
+    "mt_valor_padrao_medida": 2.5714
   },
   {
-    "mt_id": 1,
-    "mt_nome": "Azul",
-    "mt_valor": 33.33,
-    "mt_quantidade": 90,
-    "mt_padrao_medida": "g",
-    "mt_valor_padrao_medida": 0.3703,
-    "mt_qntd_produto_usado_projeto": 0,
-    "mt_valor_produto_usado_projeto": 0
-  },
-  {
-    "mt_id": 1,
-    "mt_nome": "Verde",
-    "mt_valor": 33.33,
-    "mt_quantidade": 90,
-    "mt_padrao_medida": "g",
-    "mt_valor_padrao_medida": 0.3703,
-    "mt_qntd_produto_usado_projeto": 0,
-    "mt_valor_produto_usado_projeto": 0
-  },
-  {
-    "mt_id": 1,
-    "mt_nome": "Rosa Choke",
-    "mt_valor": 33.33,
-    "mt_quantidade": 90,
-    "mt_padrao_medida": "g",
-    "mt_valor_padrao_medida": 0.3703,
-    "mt_qntd_produto_usado_projeto": 0,
-    "mt_valor_produto_usado_projeto": 0
+    "mt_id": 3,
+    "mt_nome": "Preto",
+    "mt_valor": 135.0,
+    "mt_quantidade": 1,
+    "mt_padrao_medida": "l",
+    "mt_valor_padrao_medida": 0.135
   }
 ]
